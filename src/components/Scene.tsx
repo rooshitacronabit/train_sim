@@ -22,6 +22,9 @@ import { Camera } from "./Camera";
 import { Terrain } from "./landscape/Terrain";
 import { Water } from "./landscape/Water";
 import { Grass } from "./grassmaterial/Grass.tsx";
+import  TreeModel  from "./grassmaterial/trees";
+import { Buildings, CityBlockBuilding } from "./buildings/Buildings.tsx";
+
 
 const terrainSize = 1500;
 const trainHeight = 0.7;
@@ -43,9 +46,15 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
 
   const { cameraControls, isDebug, isReverse, currentLine } = useGlobalContext();
 
+  const trainHeight = 0.7;
   const trainPosition = useMemo(() => {
-    // return new THREE.Vector3(railSegmentLength * 0, trainHeight, 0);
-
+    if (currentLine == "1 line" || currentLine == "2-line"  || currentLine == "1_line" || currentLine == "2_line") {
+      return new THREE.Vector3(
+        railSegmentLength * 0.5,
+        trainHeight,
+        trackspace - 5
+      );
+    }
     return new THREE.Vector3(
       railSegmentLength * 0,
       trainHeight,
@@ -84,8 +93,8 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
       ></CameraControls>
 
       <Terrain
-        elevation="./terrain/height_create1.jpg"
-        diffuse="./terrain/terrin_ground.jpg"
+        elevation="./terrain/height_plain.jpg"
+        diffuse="./terrain/ground-texture.jpg"
         size={1800}
         resolution={256}
         height={79.5}
@@ -99,11 +108,11 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         length={150}
       /> */}
 
-      {/* <Station
+      <Station
         position={[0, 0, 4]}
         scale={[40, 80, 40]}
         rotation={[0, Math.PI, 0]}
-      ></Station> */}
+      ></Station>
 
       <Physics debug={isDebug} timeStep="vary" updateLoop="follow">
         <Railway />
@@ -122,6 +131,10 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         <Vignette eskil={false} offset={0.02} darkness={0.1}></Vignette>
       </EffectComposer>
 
+      
+      <Buildings />  
+<CityBlockBuilding />
+
       <Grass
         position={[100, 0, 22]}
         rotation={[0, 0, 0]}
@@ -133,6 +146,14 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         scale={0.02}
       /> 
       
+      <TreeModel
+        positionOffset={[-100, 0, -30]}
+        modelCounts={{
+          TreesModel: 30,
+        }}
+        spacing={10} // Dynamic spacing
+         layoutType="grid"
+      />
     </>
   );
 };

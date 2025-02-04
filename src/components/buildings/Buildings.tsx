@@ -1,47 +1,23 @@
-import { GroupProps } from '@react-three/fiber';
-import { Model } from '../../models/BuildingsModel';
-import { Model as CityBlockModel } from '../../models/building/CityBlockModel';  
-import { Model as CityBuildingModel } from '../../models/building/City_Building_Model'; 
-import { Model as Building2Model } from '../../models/building/Bulding2Model'; 
-import { Model as Building3Model } from '../../models/building/Bulding3Model'; 
+import { GroupProps } from "@react-three/fiber";
+import { Model } from "../../models/building/building_groups_model";
+import { Model as RedBuildingModel } from "../../models/building/red_building_model";  
 import React, { useMemo } from "react";
 
 export const Buildings: React.FC<GroupProps> = React.memo((props) => {
     const memoizedProps = useMemo(() => props, [props]);
     return (
         <group {...memoizedProps}>
-            <Model scale={[0.2, 0.2, 0.2]} />
+            {/* Default Building */}
+            <Model scale={0.3} position={[0, 0, -45]} />
         </group>
-    )
+    );
 });
 
 export const CityBlockBuilding: React.FC<GroupProps> = React.memo((props) => {
     return (
         <group {...props}>
-            <CityBlockModel scale={[0.2, 0.2, 0.2]} />
+            {/* Red Building */}
+            <RedBuildingModel scale={2} position={[-40, -0.5, -40]} rotation={[0, Math.PI / -2, 0]}  />
         </group>
     );
 });
-
-export const CityBuilding: React.FC<GroupProps> = React.memo((props) => {
-    return (
-        <group {...props}>
-            <CityBuildingModel scale={[0.2, 0.2, 0.2]} />
-        </group>
-    );
-});
-export const BuildingWhite: React.FC<GroupProps> = React.memo((props) => {
-    return (
-        <group {...props}>
-            <Building2Model scale={[0.2, 0.2, 0.2]} />
-        </group>
-    );
-});
-export const BuildingWhite2: React.FC<GroupProps> = React.memo((props) => {
-    return (
-        <group {...props}>
-            <Building3Model scale={[0.2, 0.2, 0.2]} />
-        </group>
-    );
-});
-

@@ -507,15 +507,15 @@ export function Railway() {
     const positions = [];
     const numDryGrass = 100;
     const numMultipleGrass = 150;
-    const minX = 100, maxX = 300;
-    const minZ = -trackWidth - 25, maxZ = trackWidth + 25;
+    const minX = 100, maxX = 157;
+    const minZ = -trackWidth - 140, maxZ = trackWidth + -43;
 
     for (let i = 0; i < numDryGrass + numMultipleGrass; i++) {
       const x = Math.random() * (maxX - minX) + minX;
       let z = Math.random() * (maxZ - minZ) + minZ;
 
       if (Math.abs(z) <= trackWidth + 5) {
-        z = z < 5 ? z - 0 : z + 20;
+        z = z < 0 ? z - 0 : z + 0;
       }
 
       positions.push({ position: [x, 0, z], isMultipleGrass: i >= numDryGrass });
@@ -523,7 +523,46 @@ export function Railway() {
 
     return positions;
   }, [trackWidth]);
+  const curvegrassPositionsright = useMemo(() => {
+    const positions = [];
+    const numDryGrass = 100;
+    const numMultipleGrass = 150;
+    const minX = 182, maxX = 460;
+    const minZ = -trackWidth - 130, maxZ = trackWidth + -32;
 
+    for (let i = 0; i < numDryGrass + numMultipleGrass; i++) {
+      const x = Math.random() * (maxX - minX) + minX;
+      let z = Math.random() * (maxZ - minZ) + minZ;
+
+      if (Math.abs(z) <= trackWidth + 5) {
+        z = z < 0 ? z - 0 : z + 0;
+      }
+
+      positions.push({ position: [x, 0, z], isMultipleGrass: i >= numDryGrass });
+    }
+
+    return positions;
+  }, [trackWidth]);
+  const newgrassPositions = useMemo(() => {
+    const positions = [];
+    const numDryGrass = 200;
+    const numMultipleGrass = 150;
+    const minX = -50, maxX = 250;
+    const minZ = -trackWidth + 330, maxZ = trackWidth + 150;
+
+    for (let i = 0; i < numDryGrass + numMultipleGrass; i++) {
+      const x = Math.random() * (maxX - minX) + minX;
+      let z = Math.random() * (maxZ - minZ) + minZ;
+
+      if (Math.abs(z) <= trackWidth + 5) {
+        z = z < 5 ? z - 0 : z + 25;
+      }
+
+      positions.push({ position: [x, 0, z], isMultipleGrass: i >= numDryGrass });
+    }
+
+    return positions;
+  }, [trackWidth]);
   return (
     <RigidBody colliders={false} type="fixed">
       {/* {
@@ -602,13 +641,27 @@ export function Railway() {
           <GrassModel key={`dry-${index}`} position={item.position} scale={0.5} />
         )
       )}
-      {/* {curvegrassPositions.map((item, index) =>
+      {curvegrassPositions.map((item, index) =>
         item.isMultipleGrass ? (
           <MultipleGrassModel key={`multiple-${index}`} position={item.position} scale={0.007} />
         ) : (
           <GrassModel key={`dry-${index}`} position={item.position} scale={0.5} />
         )
-      )} */}
+      )}
+      {curvegrassPositionsright.map((item, index) =>
+        item.isMultipleGrass ? (
+          <MultipleGrassModel key={`multiple-${index}`} position={item.position} scale={0.007} />
+        ) : (
+          <GrassModel key={`dry-${index}`} position={item.position} scale={0.5} />
+        )
+      )}
+      {newgrassPositions.map((item, index) =>
+        item.isMultipleGrass ? (
+          <MultipleGrassModel key={`multiple-${index}`} position={item.position} scale={0.007} />
+        ) : (
+          <GrassModel key={`dry-${index}`} position={item.position} scale={0.5} />
+        )
+      )}
       {signals.map((signal, index) => (
         <group key={index}>
           {/* Render Signal */}

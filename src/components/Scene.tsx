@@ -420,12 +420,12 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         scale={[40, 80, 40]}
         rotation={[0, Math.PI, 0]}
       ></Station>
-      <GrassDrySingle position={[-40, 0, 312]} scale={1} />
-      <GrassDrySingle position={[-20, 0, 317]} scale={1} />
-      <GrassDrySingle position={[-60, 0, 309]} scale={1} />
-      <GrassDrySingle position={[-10, 0, 320]} scale={1} />
-      <GrassDrySingle position={[1, 0, 325]} scale={1} />
-      <GrassDrySingle position={[4, 0, 322]} scale={1} />
+      <GrassDrySingle position={[-40, 0, 312]} scale={0.5} />
+      <GrassDrySingle position={[-20, 0, 317]} scale={0.5} />
+      <GrassDrySingle position={[-60, 0, 309]} scale={0.5} />
+      <GrassDrySingle position={[-10, 0, 320]} scale={0.5} />
+      <GrassDrySingle position={[1, 0, 325]} scale={0.5} />
+      <GrassDrySingle position={[4, 0, 322]} scale={0.5} />
       <OldStation
         position={[-40, 0, 320]}
         scale={[25, 15, 10]}

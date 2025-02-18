@@ -355,15 +355,15 @@ export function Railway() {
         rotation: new THREE.Euler(0, -Math.PI+1, 0),
       },
       {
-        position: new THREE.Vector3(-179.5, 0, 120),
-        rotation: new THREE.Euler(0, -Math.PI+1, 0),
-      },
-      {
-        position: new THREE.Vector3(-177, 0, 180),
+        position: new THREE.Vector3(-179.5, 0, 123.8),
         rotation: new THREE.Euler(0, -Math.PI+1.5, 0),
       },
       {
-        position: new THREE.Vector3(-167, 0, 220),
+        position: new THREE.Vector3(-177, 0, 181),
+        rotation: new THREE.Euler(0, -Math.PI+1.7, 0),
+      },
+      {
+        position: new THREE.Vector3(-167, 0, 220.5),
         rotation: new THREE.Euler(0, -Math.PI+2, 0),
       },
       {
@@ -380,7 +380,7 @@ export function Railway() {
       {
 
         position: new THREE.Vector3(-142, 0, 260),
-        rotation: new THREE.Euler(0, Math.PI/2, 0),
+        rotation: new THREE.Euler(0, Math.PI-0.8, 0),
       },
       // line 7
       {
@@ -388,20 +388,20 @@ export function Railway() {
         rotation: new THREE.Euler(0, 0, 0),
       },
       {
-        position: new THREE.Vector3(-140, 0, 38),
-        rotation: new THREE.Euler(0, 0.2, 0),
+        position: new THREE.Vector3(-140, 0, 38.5),
+        rotation: new THREE.Euler(0, 0.8, 0),
       },
       {
-        position: new THREE.Vector3(-154, 0, 60),
-        rotation: new THREE.Euler(0, 0.3, 0),
+        position: new THREE.Vector3(-154, 0, 59.5),
+        rotation: new THREE.Euler(0, 1, 0),
       },
       {
-        position: new THREE.Vector3(-165.5, 0, 90),
-        rotation: new THREE.Euler(0, 0.3, 0),
+        position: new THREE.Vector3(-165.5, 0, 90.5),
+        rotation: new THREE.Euler(0, 1, 0),
       },
       {
         position: new THREE.Vector3(-170.8, 0, 120),
-        rotation: new THREE.Euler(0, 0.3, 0),
+        rotation: new THREE.Euler(0, 1.5, 0),
       },
       {
         position: new THREE.Vector3(-172.5, 0, 150),
@@ -454,13 +454,13 @@ export function Railway() {
       // },
 
       {
-        position: new THREE.Vector3(-128, 0, 281),
-        rotation: new THREE.Euler(0, -Math.PI/2+0.4, 0),
+        position: new THREE.Vector3(-128, 0, 280.8),
+        rotation: new THREE.Euler(0, -Math.PI/2+0.8, 0),
       },
 
       {
         position: new THREE.Vector3(-128.5, 0, 276),
-        rotation: new THREE.Euler(0, -Math.PI-0.2, 0),
+        rotation: new THREE.Euler(0, -Math.PI-0.8, 0),
       },
 
     ];
@@ -575,7 +575,7 @@ export function Railway() {
         <PoleInstances>
           {eletricPoleOnCurve.map((pole, ix) => {
             // Calculate pole text values dynamically
-            const poleTextDown = ix > 45 ? 0 : ix + 1;
+            const poleTextDown = ix > 50 ? 20 : ix + 1;
             // const poleTextUp = ix > 45 ? Math.min(ix + 1, 742) : ix + 1;
             const poleTextUp = 742;
 

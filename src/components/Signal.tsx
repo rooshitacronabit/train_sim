@@ -351,19 +351,33 @@ export function Signal({
     const red = signalRef.current.getObjectByName("RedLight") as THREE.Mesh;
     const green = signalRef.current.getObjectByName("GreenLight") as THREE.Mesh;
 
-    if (yellow && !endSignal.includes(label)) {
-      if (label == "S-38" || label == "S-40") {
+    // if (yellow && !endSignal.includes(label)) {
+    //   if (label == "S-38" || label == "S-40") {
+    //     setEndSignal(true);
+    //     yellow.material = freeOffMaterial;
+    //   } else {
+    //     if (yellow01) {
+    //       yellow01.material = freeOffMaterial;
+    //       //   yellow.material = freeOffMaterial;
+    //     }
+    //     yellow.material = isFree ? freeOnMaterial : freeOffMaterial;
+    //     // }
+    //   }
+    // }
+    if (yellow) {
+      if (endSignal.includes(label)) {
+        yellow.material = freeOffMaterial; // Only for endSignal signals, turn off YellowLight
+      } else if (label == "S-38" || label == "S-40") {
         setEndSignal(true);
         yellow.material = freeOffMaterial;
       } else {
         if (yellow01) {
           yellow01.material = freeOffMaterial;
-          //   yellow.material = freeOffMaterial;
         }
         yellow.material = isFree ? freeOnMaterial : freeOffMaterial;
-        // }
       }
     }
+    
     if (red) {
       if (label == "S-38" || label == "S-40") {
         red.material = stopOnMaterial;

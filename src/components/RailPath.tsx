@@ -497,7 +497,7 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
             </Detailed>
             {polePoints.map(([pos, rot], ix) => {
               poleTextDown = poleTextDown > 45 ? 0 : poleTextDown + 1;
-              poleTextUp = poleTextDown > 45 ? Math.min(poleTextUp + 1, 750): poleTextUp;
+              poleTextUp = poleTextDown > 45 ? Math.min(poleTextUp + 1, 742): poleTextUp;
               // console.log("polUP",poleTextDown,poleTextUp);
               if (
                 center.x >= -50 &&

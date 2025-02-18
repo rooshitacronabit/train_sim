@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { createRef, useMemo } from "react";
 import { useLoader } from "@react-three/fiber";
-import { CatmullRomLine, Detailed } from "@react-three/drei";
+import { CatmullRomLine, Detailed, Text } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 import {
@@ -35,6 +35,7 @@ import { Model as StationPole } from "../models/electricPole/NewStationPoleModel
 import { Model as PoleNewModel4 } from "../models/electricPole/newelectricBlend2";
 import { Model as StationPole1 } from "../models/electricPole/StationPoleModel";
 // import { Model as PoleNewModel4 } from "../models/electricPole/SquareElectricPole4";
+const poleTextColor = "yellow";
 
 export function Railway() {
   const { railPaths, setRailPaths, path } = useGlobalContext();
@@ -572,14 +573,36 @@ export function Railway() {
         )
       } */}
         <PoleInstances>
-          {eletricPoleOnCurve.map((pole, ix) => (
-            <PoleModel
-              key={ix}
-              position={pole.position}
-              rotation={pole.rotation}
-            />
-          ))}
+          {eletricPoleOnCurve.map((pole, ix) => {
+            // Calculate pole text values dynamically
+            const poleTextDown = ix > 45 ? 0 : ix + 1;
+            // const poleTextUp = ix > 45 ? Math.min(ix + 1, 742) : ix + 1;
+            const poleTextUp = 742;
+
+            return (
+              <group key={ix} position={pole.position} rotation={pole.rotation}>
+                <PoleModel />
+                <Text
+                  color={poleTextColor}
+                  fontSize={0.05}
+                  position={[0.05, 1.3, 0.89]}
+                  rotation={[0, Math.PI / 2, 0]}
+                >
+                  {poleTextUp}
+                </Text>
+                <Text
+                  color={poleTextColor}
+                  fontSize={0.05}
+                  position={[0.05, 1.2, 0.89]}
+                  rotation={[0, Math.PI / 2, 0]}
+                >
+                  {poleTextDown}
+                </Text>
+              </group>
+            );
+          })}
         </PoleInstances>
+
         <group />
     
       {eletricPoleStation.map((pos, i) => {

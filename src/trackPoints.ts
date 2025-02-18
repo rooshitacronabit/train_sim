@@ -165,8 +165,8 @@ export const signalsPoints = [
   
   { x: railSegmentLength * -1.95, y: 0, z: trackspace * 0.1, facing: "forward", label: "S-32", type: "signal-starter" },
   { x: railSegmentLength * 1.45, y: 0, z: trackspace * -1.1, facing: "reverse", label: "S-33", type: "signal-main-lunar-left" },
-  { x: railSegmentLength * -0.8, y: 0, z: trackspace * 0.5, facing: "forward", label: "S-34", type: "signal-starter", rotation: [0, -0.05, 0] },
-  { x: railSegmentLength * 0.7, y: 0, z: trackspace * 0, facing: "reverse", label: "S-35", type: "signal-main-lunar-left" },
+  { x: railSegmentLength * -0.8, y: -0.13, z: trackspace * 1.2, facing: "forward", label: "S-34", type: "signal-starter", rotation: [0, -0.05, 0] },
+  { x: railSegmentLength * 1.15, y: 0, z: trackspace * -0.2, facing: "reverse", label: "S-35", type: "signal-main-lunar-left" },
   { x: railSegmentLength * -1.2, y: 0, z: trackspace * 0.1, facing: "forward", label: "S-36", type: "signal-starter" },
   { x: railSegmentLength * 1, y: 0, z: trackspace * 0.9, facing: "reverse", label: "S-37", type: "signal-main-lunar-right" },
   { x: railSegmentLength * 0.55, y: 0, z: trackspace * -1.1, facing: "forward", label: "S-38", type: "signal-starter", rotation: [0, -0.05, 0] },
@@ -189,7 +189,7 @@ export const signalsPoints = [
 
 
 ];
-export const excludedSignalsForGrassDrySingle = ["S-38", "S-40", "S-34", "S-36"];
+export const excludedSignalsForGrassDrySingle = ["S-38", "S-40", "S-34", "S-36", "S-35"];
 export const grassDrySinglePositionOverrides = {
   "S-98": [-0.5, 0, 0.8],
   "S-100": [-0.5, 0, 0.8],

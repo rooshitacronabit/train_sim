@@ -423,6 +423,7 @@ export function Signal({
 
     switch (type) {
       case "signal-main-lunar":
+      case "signal-starter-lunar":
       case "signal-main-lunar-right":
       case "signal-main-lunar-left":
       case "signal-main-lunar-right-three":

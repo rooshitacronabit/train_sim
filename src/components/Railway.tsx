@@ -489,14 +489,14 @@ export function Railway() {
     const numDryGrass = 100;
     const numMultipleGrass = 150;
     const minX = 200, maxX = 900;
-    const minZ = -trackWidth - 25, maxZ = trackWidth + 25;
+    const minZ = -trackWidth - 12, maxZ = trackWidth + 12;
 
     for (let i = 0; i < numDryGrass + numMultipleGrass; i++) {
       const x = Math.random() * (maxX - minX) + minX;
       let z = Math.random() * (maxZ - minZ) + minZ;
 
       if (Math.abs(z) <= trackWidth + 5) {
-        z = z < 5 ? z - 0 : z + 20;
+        z = z < 5 ? z - 0 : z + 10;
       }
 
       positions.push({ position: [x, 0, z], isMultipleGrass: i >= numDryGrass });
@@ -575,8 +575,9 @@ export function Railway() {
         <PoleInstances>
           {eletricPoleOnCurve.map((pole, ix) => {
             // Calculate pole text values dynamically
-            const poleTextDown = ix > 50 ? 20 : ix + 1;
+            // const poleTextDown = ix > 50 ? 20 : ix + 1;
             // const poleTextUp = ix > 45 ? Math.min(ix + 1, 742) : ix + 1;
+            const poleTextDown = 25 + ix;
             const poleTextUp = 742;
 
             return (

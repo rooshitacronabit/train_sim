@@ -31,6 +31,31 @@ export function Railway() {
     "./debris/Height.png",
   ]);
 
+
+
+  
+  const TrackTexture = ({ position, scale, rotation }) => {
+    // Load the texture using useLoader
+    const texture = useLoader(
+      THREE.TextureLoader,
+      "./terrain/new-texture-track2.png"
+    );
+    // const texture = useLoader(THREE.TextureLoader, "./terrain/track-texture.png");
+
+    return (
+      <mesh rotation={rotation} position={position} scale={scale}>
+        {/* Add geometry (e.g., PlaneGeometry) */}
+        <planeGeometry args={[5, 5]} />
+        {/* Add material and apply the texture */}
+        <meshBasicMaterial map={texture} />
+      </mesh>
+    );
+  };
+
+  const trackWidth = 25;
+
+
+
   const paths = useMemo(() => {
     const res: RailPathProps[] = [];
 
@@ -86,16 +111,24 @@ export function Railway() {
         for (let i = start; i > end; i--) {
           const sz = i === jointStart ? joint[0] : joint[1];
           const ez = i === jointEnd ? joint[2] : joint[3];
+          console.log(curvePath,trackAngle);
           res.push({
             start: new THREE.Vector3(i * trackLength, 0, sz),
-            end: new THREE.Vector3(
-              trackAngle == "curve1" || trackAngle == "curve2" || trackAngle == "curve4"|| trackAngle == "curve5" ? (i - 2) * trackLength
-                : trackAngle == "curve3" ? (i - 2.5) * trackLength 
-                : curvePath == "straight1" ? (i) * trackLength 
+            end: 
+            new THREE.Vector3(
+              
+              // curvePath == "curveLeft"&&(trackAngle == "curve1" || trackAngle == "curve2" || trackAngle == "curve4"|| trackAngle == "curve5"||trackAngle != undefined) ? (i - 2) * trackLength
+              //   : trackAngle == "curve3" ? (i - 20) * trackLength 
+              //   : curvePath == "straight1" ? (i) * trackLength 
+              //   : (i - 1) * trackLength,
+              trackAngle != undefined && curvePath == "curveLeft"
+                ? (i ) * trackLength
                 : (i - 1) * trackLength,
               0,
               ez
+              
             ),
+            
             line,
             rotation: sz !== ez ? 90 : 0,
             curvePath,
@@ -153,8 +186,13 @@ export function Railway() {
   const deadEndPotion = useMemo(() => {
     return [
       {
-        position: new THREE.Vector3(0, -0.1, -5.5),
+        position: new THREE.Vector3(2, -0.1, -12),
         rotation: new THREE.Euler(),
+      },
+
+      {
+        position: new THREE.Vector3(-152, -0.1, 27),
+        rotation: new THREE.Euler(0,-Math.PI,0),
       },
     ];
   }, []);

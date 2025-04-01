@@ -55,3 +55,4 @@ export function Camera({index, fixed, position, distance, targetRef}: CameraProp
         <group ref={camRef} position={position} ></group>
     );
 }
+

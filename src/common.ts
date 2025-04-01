@@ -62,6 +62,7 @@ export interface SignalProps {
     | "signal-main-lunar-right-two-model"
     | "signal-home-four-light-lunar-model"
     | "signal-home-four-light-lunar-right-model"
+    // | "signal-main-lunar-right-three"
     | "signal-digital";
 }
 
@@ -149,22 +150,141 @@ export const railSegmentLength = 30;
 // NAMING : <mainLine_name>.<its_subline_name>
 const trainHeight = 0.7;
 export const railwayRoots = {
-  "RJT-VRL": {
-    lines: ["1 line"],
+  "RJT-SUNR": {
+    lines: ["1 line", "2 line"],
   },
+
+  "SUNR-RJT": {
+    lines: ["1-line", "2-line"],
+  },
+
+  "SUNR-BTD":{
+    lines:["3-line","4-line"],
+  },
+
+  "BTD-SUNR":
+  {
+    lines:["3 line","4 line"],
+  },
+
+  "BLRD-SUNR":
+  {
+    lines:["5 line","6 line" ],
+  },
+
+  "SUNR-BLRD":
+  {
+    lines:["5-line","6-line" ],
+  },
+
+  "SUNR-DHR":
+  {
+    lines:["7-line"],
+  },
+
+  "DHR-SUNR":
+  {
+    lines:["7 line"],
+  },
+
+  "BLRD-BTD":
+  {
+    lines:["9-line","10-line"],
+  }
  
 };
 export const railWayLines = {
-  // VRL
-  "1 line": [
-   1,2,3,4,5,35,36,37,38,39,40,129,156,140,141,142,160,161
+  // Chamaraj
+  "1-line": [
+  17,18,19,20,21,22,23,24,25,26,27,0,1,2,3,4,5
   ],
+  "2-line":[
+  17,18,19,20,21,22,23,24,25,26,62,79,80,81,82,83,84,85,86,87,88,89,90
+  ],
+  "1 line": [
+   16,17,18,19,20,21,22,23,24,25,26,27,0,1,2,3,4,5
+  ],
+  "2 line":[
+    16,17,18,19,20,21,22,23,24,25,26,62,79,80,81,82,83,84,85,86,87,88,89,90
+  ],
+
+  //botad
+  "3 line":
+  [
+    // 9,8,7,165,164,163,162,
+    162,163,164,165,7,8,9,10,176
+  ],
+  "4 line":
+  [
+    // 9,8,7,165,161,160,159,
+    159,160,161,165,7,8,9,
+  ],
+  "3-line":
+  [
+    // 162,163,164,165,7,
+    8,9,10,176,
+    // Problem....
+  ],
+  "4-line":
+  [
+    // 159,160,161,165,7,
+    8,9,10,176
+    // Problem
+  ],
+
+
+//Balaroad
+
+  "5-line":
+  [
+    1,2,3,4,5,12,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60
+  ],
+
+  "6-line":
+  [
+    80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,
+  ],
+
+  "5 line":
+  [
+    1,2,3,4,5,12,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60
+  ],
+
+  "6 line":
+  [
+    80, 81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,
+  ],
+
+
+//dhangadhra
+  "7-line":
+  [
+    117,118,119,120,121,86,87,88,89,90,91,92,93,94,95,96,173,174,175,
+  ],
+  "7 line":
+  [
+    117,118,119,120,121,86,87,88,89,90,91,92,93,94,95,96,173,174,175,
+  ],
+
+  //balaroad to botad
+  "9-line":
+  [
+    46,45,166,170,171
+    // ,168,169,              1line upper one camposition {-350,6,-50}
+  ],
+
+  "10-line":
+  [
+    45,44,168,169,        //2line down one  167 to come to down one from upper one
+  ]
  
 } as Record<string, number[]>;
 
 // for Signal lunar light
 export const railWayLunar = {
   "1 line": [1, 2, 3, 4, 5],
+
+  "5 line":[1, 2, 3, 4, 5],
  
 } as Record<string, number[]>;
 

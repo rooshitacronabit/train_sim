@@ -44,6 +44,9 @@ export function Ui() {
     setIsReverse,
     popUpVisible,
     setIsEngineAudioPlaying,
+    currentSpeed,
+    maxSpeed,
+    setMaxSpeed
   } = useGlobalContext();
   const [controllbar, setControllbar] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -59,10 +62,10 @@ export function Ui() {
 
   const updateTrainState = useCallback(
     (next: TrainState) => {
-      const audioElement = document.getElementById(
-        "EngineAudio"
-      ) as HTMLAudioElement;
-      audioElement.play();
+      // const audioElement = document.getElementById(
+      //   "EngineAudio"
+      // ) as HTMLAudioElement;
+      // audioElement.play();
       if (next === state || !trainStates.includes(state)) return;
       if (!currentLine) {
         toast("Please select a line first", { type: "warning" });
@@ -101,6 +104,21 @@ export function Ui() {
       setCurrentLine(name);
       setIsLineDropdownOpen(false);
 
+
+      // name == "1 line" ||
+      // name == "2 line" ||
+      name == "1-line"||
+      name == "2-line"||
+      name == "4 line"||
+      name == "3 line"||
+      name == "5 line"||
+      name == "6 line"||
+      name == "7 line"
+      // name == "6-line"
+      // name == "9-line"||
+      // name == "10-line"
+      ?setIsReverse(true)
+      :setIsReverse(false);
   
       railPaths.forEach((ref, index) => {
         // console.log("Rail path ",ref,index);
@@ -180,19 +198,215 @@ export function Ui() {
     setIsLineDropdownOpen(false);
   };
 
+  const IncreaseSpeed = () => {
+    
+    setMaxSpeed(maxSpeed+10)
+  }
+
+  const DecreaseSpeed = () => { 
+    
+    setMaxSpeed(maxSpeed-10)
+  }
   return (
-    <>
+//     <>
+//       <div className="logo-container">
+//         <img className="logo-image" src="./logo/railway_logo.png" alt="logo" />
+//         <div className="logo-text">
+//           Rajkot Yard 3D <br />
+//           Virtual Tour for LRD
+//         </div>
+//       </div>
+//       <div>{popUpVisible && <SignalPopup />}</div>
+
+//       <div className="buttons" style={{ display: !controllbar ? "none" : "" }}>
+//         <div className="button-container">
+//           {trainStates.map((next, index) => (
+//             <button
+//               key={"state-" + index}
+//               disabled={trackEnd === next}
+//               className={
+//                 state === next
+//                   ? "active"
+//                   : state === next + "-signal"
+//                   ? "signaled"
+//                   : "inactive"
+//               }
+//               onClick={() => updateTrainState(next)}
+//             >
+//               {/* <Tooltip title={next} arrow placement="right">
+//                 {getState(next)}
+//               </Tooltip>*/}
+
+//               {next}
+//             </button>
+//           ))}
+
+//           {/* <div
+//             className="dropdown-container"
+//             onMouseEnter={handleMouseEnter}
+//             onMouseLeave={handleMouseLeave}
+//             style={{ position: "relative", display: "inline-block" }}
+//           >
+//             <button className="button">
+//               <AltRoute />
+
+//             </button>
+//             {isDropdownOpen && (
+//               <div className="dropdown-menu" style={dropdownStyle}>
+//                 {Object.keys(railwayRoots).map((root, index) => (
+//                   <div
+//                     key={"line-" + index}
+//                     className="dropdown-item"
+//                     style={dropdownItemStyle}
+//                     onClick={() => updateCurRoot(root)}
+//                   >
+//                     {root}
+//                   </div>
+//                 ))}
+//               </div>
+//             )}
+//           </div>
+// {/*  */}
+
+// <div className="spacer" />
+//           {/* ROOTS */}
+//           <select
+//             value={selctedRootName}
+//             className="button"
+//             onChange={(e) => updateCurRoot(e.target.value)}
+//           // disabled={isDisabled}
+//           >
+//             <option value="">Select Route</option>
+//             {Object.keys(railwayRoots).map((root, index) => (
+//               <option key={"line-" + index} value={root}>
+//                 {root}
+//               </option>
+//             ))}
+//           </select>
+
+          
+//           {/* {railRoot.length > 0 ? (
+//             <div
+//               className="dropdown-container"
+//               onMouseEnter={handleLineMouseEnter}
+//               onMouseLeave={handleLineMouseLeave}
+//               style={{ position: "relative", display: "inline-block" }}
+//             >
+//               <button className="button">
+//                 <ForkRight /> * */}
+
+//                   {railRoot.map((name, index) => (
+//                     <button
+//                       key={"line-" + index}
+//                       className={
+//                         currentLine === name
+//                           ? "active"
+//                           : "inactive"
+//                       }
+//                       onClick={() => updateCurLine(name)}
+//                     >
+//                       {name}
+//                     </button>
+//                   ))}
+
+       
+
+//           <button key={"reset"} onClick={() => pageReolad()}>
+//             Reset
+//           </button>
+//           {/* <div
+//             className="dropdown-container"
+//             onMouseEnter={handleCamMouseEnter}
+//             onMouseLeave={handleCamMouseLeave}
+//             style={{ position: "relative", display: "inline-block" }}
+//           >
+//             <button className="button">
+//               <VideoCameraBack /> */}
+//               <div className="spacer"/>
+//                 {cameras.map((cam, index) => (
+//                   <button
+//                     key={"cab-" + index}
+//                     className={
+//                       camera === cam.index
+//                         ? "active dropdown-item"
+//                         : "inactive dropdown-item"
+//                     }
+//                     onClick={() => {
+//                       setCamera(index);
+//                       setIsCamDropdownOpen(false);
+//                     }}
+//                   >
+//                     {camreView[index]} view
+//                   </button>
+//                 ))}
+//               {/* // </div> */}
+//             {/* )} */}
+//           {/* </div> */}
+      
+//           <div className="spacer" />
+
+//           <button
+//             className={isDebug ? "active" : "inactive"}
+//             onClick={() => setDebug(!isDebug)}
+//           >Debug
+//           </button>
+
+//           <SpeedoMeter />
+//             <button
+//               key={"speed+1"}
+//               // className={camera === cam.index ? "active dropdown-item" : "inactive dropdown-item"}
+//               onClick={() => IncreaseSpeed()}
+//             >
+//               +
+//             </button>
+//             <button
+//               key={"speed-1"}
+//               // className={camera === cam.index ? "active dropdown-item" : "inactive dropdown-item"}
+//               onClick={() => DecreaseSpeed()}
+//             >
+//               -
+//             </button>
+
+//           <Horn />
+
+//           <EngineAudioComponent />
+
+//           {/* <div>
+//             <button onClick={openPopup}>
+//               <QuestionMark />
+//             </button>
+
+//           </div> */}
+//         </div>
+//       </div>
+//       {/* {isOpen && (
+//         <div className="overlayStyle">
+//           <div className="modalstyle">
+//             <h2>Popup Content</h2>
+//             <p>This is a simple popup in React!</p>
+//             <button onClick={closePopup}>Close</button>
+//           </div>
+//         </div>
+//       )} */}
+//     </>
+
+
+<>
       <div className="logo-container">
         <img className="logo-image" src="./logo/railway_logo.png" alt="logo" />
-        <div className="logo-text">
-          Rajkot Yard 3D <br />
-          Virtual Tour for LRD
-        </div>
+        <div className="logo-text">Rajkot Yard 3D <br />Virtual Tour for LRD</div>
       </div>
       <div>{popUpVisible && <SignalPopup />}</div>
-
-      <div className="buttons" style={{ display: !controllbar ? "none" : "" }}>
-        <div className="button-container">
+      {/* <button
+        className={`controlButton ${controllbar ? "controllbuttonHidden" : "upArrow"
+          }`}
+        onClick={() => hideTheControll()}
+      >
+        {" "} */}
+      {/* {!controllbar ? <div> </div> : "Hide"} controls */}
+      {/* <img src="./upArrow.png" alt="Show" /> */}
+      {/* </button> */}
+      <div className="buttons" style={{display : !controllbar ? "none" : ""}}>
           {trainStates.map((next, index) => (
             <button
               key={"state-" + index}
@@ -201,151 +415,81 @@ export function Ui() {
                 state === next
                   ? "active"
                   : state === next + "-signal"
-                  ? "signaled"
-                  : "inactive"
+                    ? "signaled"
+                    : "inactive"
               }
               onClick={() => updateTrainState(next)}
             >
-              <Tooltip title={next} arrow placement="right">
-                {getState(next)}
-              </Tooltip>
+              {next}
             </button>
           ))}
-
-          <div
-            className="dropdown-container"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            style={{ position: "relative", display: "inline-block" }}
-          >
-            <button className="button">
-              <AltRoute />
-
-            </button>
-            {isDropdownOpen && (
-              <div className="dropdown-menu" style={dropdownStyle}>
-                {Object.keys(railwayRoots).map((root, index) => (
-                  <div
-                    key={"line-" + index}
-                    className="dropdown-item"
-                    style={dropdownItemStyle}
-                    onClick={() => updateCurRoot(root)}
-                  >
-                    {root}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {railRoot.length > 0 ? (
-            <div
-              className="dropdown-container"
-              onMouseEnter={handleLineMouseEnter}
-              onMouseLeave={handleLineMouseLeave}
-              style={{ position: "relative", display: "inline-block" }}
-            >
-              <button className="button">
-                <ForkRight />
-
-              </button>
-
-              {isLineDropdownOpen && (
-                <div className="dropdown-menu" style={dropdownStyle}>
-                  {railRoot.map((name, index) => (
-                    <button
-                      key={"line-" + index}
-                      className={
-                        currentLine === name
-                          ? "active dropdown-item"
-                          : "inactive dropdown-item"
-                      }
-                      onClick={() => updateCurLine(name)}
-                    >
-                      {" "}
-                      {name}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : (
-            <></>
-          )}
-
-       
-
-          <button key={"reset"} onClick={() => pageReolad()}>
-            <Tooltip title="Reset" arrow placement="right">
-              {" "}
-              <Autorenew sx={{ color: "white" }} />
-              
-            </Tooltip>
-          </button>
-          <div
-            className="dropdown-container"
-            onMouseEnter={handleCamMouseEnter}
-            onMouseLeave={handleCamMouseLeave}
-            style={{ position: "relative", display: "inline-block" }}
-          >
-            <button className="button">
-              <VideoCameraBack />
-            </button>
-            {isCamDropdownOpen && (
-              <div className="dropdown-menu" style={dropdownStyle}>
-                {cameras.map((cam, index) => (
-                  <button
-                    key={"cab-" + index}
-                    className={
-                      camera === cam.index
-                        ? "active dropdown-item"
-                        : "inactive dropdown-item"
-                    }
-                    onClick={() => {
-                      setCamera(index);
-                      setIsCamDropdownOpen(false);
-                    }}
-                  >
-                    {camreView[index]} view
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-      
           <div className="spacer" />
+          {/* ROOTS */}
+          <select
+            value={selctedRootName}
+            className="button"
+            onChange={(e) => updateCurRoot(e.target.value)}
+          // disabled={isDisabled}
+          >
+            <option value="">Select Route</option>
+            {Object.keys(railwayRoots).map((root, index) => (
+              <option key={"line-" + index} value={root}>
+                {root}
+              </option>
+            ))}
+          </select>
+          {/* lINES */}
+          {railRoot.map((name, index) => (
+            <button
+              key={"line-" + index}
+              className={currentLine === name ? "active" : "inactive"}
+              onClick={() => updateCurLine(name)}
+            >
+              {name}
+            </button>
+          ))}
+         
+          <button key={"reset"} onClick={() => pageReolad()}>
+            Reset
+          </button>
+          <div className="spacer" />
+          {cameras.map((cam, index) => (
+             <button
+             key={"cab-" + index}
+             className={camera === cam.index ? "active dropdown-item" : "inactive dropdown-item"}
+             onClick={() => { setCamera(index); setIsCamDropdownOpen(false); }}
 
+           >
+             {camreView[index]} view
+           </button>
+          ))}
+          <div className="spacer" />
           <button
             className={isDebug ? "active" : "inactive"}
             onClick={() => setDebug(!isDebug)}
           >
-            <Tooltip title="Debug" arrow placement="right">
-              {" "}
-              <Adb sx={{ color: "white" }} />
-            </Tooltip>
+            Debug
           </button>
-          {/* <SpeedoMeter /> */}
+          <SpeedoMeter />
+            <button
+              key={"speed+1"}
+              // className={camera === cam.index ? "active dropdown-item" : "inactive dropdown-item"}
+              onClick={() => IncreaseSpeed()}
+            >
+              +
+            </button>
+            <button
+              key={"speed-1"}
+              // className={camera === cam.index ? "active dropdown-item" : "inactive dropdown-item"}
+              onClick={() => DecreaseSpeed()}
+            >
+              -
+            </button>
           <Horn />
 
           <EngineAudioComponent />
-
-          <div>
-            <button onClick={openPopup}>
-              <QuestionMark />
-            </button>
-
-          </div>
         </div>
-      </div>
-      {isOpen && (
-        <div className="overlayStyle">
-          <div className="modalstyle">
-            <h2>Popup Content</h2>
-            <p>This is a simple popup in React!</p>
-            <button onClick={closePopup}>Close</button>
-          </div>
-        </div>
-      )}
+      
     </>
   );
 }

@@ -24,19 +24,19 @@ const calculatePositions = (position, isReverse, config, currentLine) => {
   const { engineDistance, coachDistance, jointDistance } = config;
 
   const shouldReverse =
-    isReverse && (currentLine == "1-line" || currentLine == "2-line");
+    isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7 line"|| currentLine == "7-line");
 
   const enginePosition = position.clone();
 
   const firstCoachOffset = shouldReverse
     ? -engineDistance - coachDistance - jointDistance
-    : currentLine == "1 line" || currentLine == "2 line"
-    ? -engineDistance - coachDistance - jointDistance
+    : currentLine == "50-line" || currentLine == "16-line"
+     ? -engineDistance - coachDistance - jointDistance
     : engineDistance + coachDistance + jointDistance;
 
   const secondCoachOffset = shouldReverse
     ? -coachDistance * 2 - jointDistance
-    : currentLine == "1 line" || currentLine == "2 line"
+    : currentLine == "50-line" || currentLine == "16-line"
     ? -coachDistance * 2 - jointDistance
     : coachDistance * 2 + jointDistance;
 
@@ -56,6 +56,10 @@ const calculatePositions = (position, isReverse, config, currentLine) => {
     .clone()
     .add(new THREE.Vector3(endOffset, 0, 0));
 
+    // console.log("Line:", currentLine);
+    // console.log("Engine Position:", enginePosition);
+    // console.log("First Coach Offset:", firstCoachOffset);
+    // console.log("Second Coach Offset:", secondCoachOffset);
   return {
     enginePosition,
     firstCoachPosition,
@@ -79,9 +83,9 @@ export function Train({ position }: TrainProps) {
   const trainRunning = "lr";
 
   const rotation = useMemo(() => {
-    return isReverse && (currentLine == "1-line" || currentLine == "2-line")
+    return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line")
       ? new THREE.Euler(0, Math.PI, 0)
-      : currentLine == "1 line" || currentLine == "2 line"
+      : currentLine == "1 line" || currentLine == "2 line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7-line"
       ? new THREE.Euler(0, Math.PI, 0)
       : new THREE.Euler(0, 0, 0);
   }, [isReverse, currentLine]);
@@ -101,12 +105,15 @@ export function Train({ position }: TrainProps) {
 
   const targetSpeed = useMemo(() => {
     if (isReverse) {
-      if (state == "forward" || state == "forward-signal") return -maxSpeed;
-      else if (state == "reverse" || state == "reverse-signal") return maxSpeed;
+      if (state == "forward")// || state == "forward-signal") 
+      return -maxSpeed;
+      else if (state == "reverse" )//|| state == "reverse-signal")
+      return maxSpeed;
       else return 0.0;
     } else {
-      if (state == "forward" || state == "forward-signal") return maxSpeed;
-      else if (state == "reverse" || state == "reverse-signal")
+      if (state == "forward")// || state == "forward-signal") 
+      return maxSpeed;
+      else if (state == "reverse" )//|| state == "reverse-signal")
         return -maxSpeed;
       else return 0.0;
     }
@@ -127,10 +134,18 @@ export function Train({ position }: TrainProps) {
   ]);
 
   useFrame(() => {
+
+    if(state=='stop')
+      {
+        currentSpeed.current = 0;
+        return;
+      }
+      let extraAcceleration = maxSpeed < 90 ? 3 : maxSpeed / 10
+
     // --- Acceleration ---
     if (currentSpeed.current < targetSpeed) {
       currentSpeed.current = Math.min(
-        currentSpeed.current + trainAcc * 2,
+        currentSpeed.current + trainAcc * extraAcceleration,
         targetSpeed
       );
       // currentSpeed.current = 130;
@@ -138,15 +153,15 @@ export function Train({ position }: TrainProps) {
     }
     // --- Deceleration ---
     currentSpeed.current = Math.max(
-      currentSpeed.current - trainAcc * 2,
+      currentSpeed.current - trainAcc * extraAcceleration,
       targetSpeed
     );
   });
 
   const ballColliderPosition = useMemo(() => {
-    return isReverse && (currentLine == "1-line" || currentLine == "2-line")
+    return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line")
       ? { start: new THREE.Vector3(6, 0, 0), end: new THREE.Vector3(-6, 0, 0) }
-      : currentLine == "1 line" || currentLine == "2 line"
+      : currentLine == "1 line" || currentLine == "2 line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7-line"
       ? { start: new THREE.Vector3(6, 0, 0), end: new THREE.Vector3(-6, 0, 0) }
       : { start: new THREE.Vector3(0, 0, 0), end: new THREE.Vector3(0, 0, 0) };
   }, [isReverse, currentLine]);

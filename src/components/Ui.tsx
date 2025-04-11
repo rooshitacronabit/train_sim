@@ -394,7 +394,7 @@ export function Ui() {
 <>
       <div className="logo-container">
         <img className="logo-image" src="./logo/railway_logo.png" alt="logo" />
-        <div className="logo-text">Rajkot Yard 3D <br />Virtual Tour for LRD</div>
+        <div className="logo-text">Surendranagar Yard 3D <br />Virtual Tour for LRD</div>
       </div>
       <div>{popUpVisible && <SignalPopup />}</div>
       {/* <button

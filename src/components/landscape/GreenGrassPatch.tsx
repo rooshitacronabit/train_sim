@@ -11,28 +11,29 @@ export interface TreePatchProps extends GroupProps {
 
 export function GreenGrassPatch({seed, width, length, ...props}: TreePatchProps) {
 
-    const positions = useMemo(() => {
-        const noise = createNoise2D(() => {
-            return seed || Math.random();
-        });
-        const positions = [];
-        const w = width || 160;
-        const l = length || 20;
-        for (let a = 0; a <= 360; a += 6) {
-            const theta = a * Math.PI / 180;
-            const r = noise(a, 0);
-            const x = Math.cos(theta) * r * w;
-            const z = Math.sin(theta) * r * l;
-            positions.push([x, 0, z]);
-        }
-        return positions
-    }, [seed, width, length]);
+    // const positions = useMemo(() => {
+    //     const noise = createNoise2D(() => {
+    //         return seed || Math.random();
+    //     });
+    //     const positions = [];
+    //     const w = width || 160;
+    //     const l = length || 20;
+    //     for (let a = 0; a <= 360; a += 6) {
+    //         const theta = a * Math.PI / 180;
+    //         const r = noise(a, 0);
+    //         const x = Math.cos(theta) * r * w;
+    //         const z = Math.sin(theta) * r * l;
+    //         positions.push([x, 0, z]);
+    //     }
+    //     return positions
+    // }, [seed, width, length]);
 
     return (
         <Instances {...props}>
-            {positions.map((position, index) => (
+            {/* {positions.map((position, index) => (
                 <Model key={index} position={position} scale={[0.15, 0.15, 0.15]}/>
-            ))}
+            ))} */}
+            <Model/>
         </Instances>
     )
 }

@@ -43,7 +43,7 @@ type GLTFResult = GLTF & {
 }
 
 export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('./building/Cabin-transformed.glb') as GLTFResult
+  const { nodes, materials } = useGLTF('./building/cabin-transformed.glb') as GLTFResult
   return (
     <group {...props} dispose={null}>
       <mesh name="polySurface1_lambert2_0" geometry={nodes.polySurface1_lambert2_0.geometry} material={materials.lambert2} scale={0.01} />
@@ -66,4 +66,4 @@ export function Model(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('./building/Cabin-transformed.glb')
+useGLTF.preload('./building/cabin-transformed.glb')

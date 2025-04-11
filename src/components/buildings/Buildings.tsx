@@ -4,6 +4,7 @@ import { Model as CityBlockModel } from '../../models/building/CityBlockModel';
 import { Model as CityBuildingModel } from '../../models/building/City_Building_Model'; 
 import { Model as Building2Model } from '../../models/building/Bulding2Model'; 
 import { Model as Building3Model } from '../../models/building/Bulding3Model'; 
+import { Model as OldBuildingModel } from '../../models/building/Old_Building_Model'; 
 import React, { useMemo } from "react";
 
 export const Buildings: React.FC<GroupProps> = React.memo((props) => {
@@ -45,3 +46,10 @@ export const BuildingWhite2: React.FC<GroupProps> = React.memo((props) => {
     );
 });
 
+export const StationBuilding2: React.FC<GroupProps> = React.memo((props) => {
+    return (
+        <group {...props}>
+            <OldBuildingModel scale={[0.2, 0.2, 0.2]} />
+        </group>
+    );
+});

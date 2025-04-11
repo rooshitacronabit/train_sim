@@ -216,14 +216,14 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         restThreshold={0.15}
       ></CameraControls>
 
-      {/* <Terrain
+      <Terrain
         elevation="./terrain/height_create1.jpg"
         diffuse="./terrain/terrin_ground.jpg"
         size={2800}
         resolution={2048}
         height={30}
         position={[400, -17.25, 10]}
-      /> */}
+      />
 
   <OverBridge
         scale={1}

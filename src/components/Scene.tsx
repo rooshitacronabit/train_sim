@@ -37,7 +37,7 @@ import { GoodsTrain } from "./buildings/GoodsTrain.tsx";
 import { useLoader } from "@react-three/fiber";
 import { WareHouse } from "./WareHouseModel.tsx";
 import { RailwayCrossing } from "./RailwayCrossing.tsx";
-import {Temple} from "./temple.tsx";
+// import {Temple} from "./temple.tsx";
 import { GreenGrassPatch } from "./landscape/GreenGrassPatch.tsx";
 import { GrassDrySingle } from "../components/landscape/GrassDrySingle";
 import { TreePatch } from "./landscape/TreePatch.tsx";
@@ -549,11 +549,11 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         }}
         spacing={15} // Dynamic spacing
       />
-<Temple
+{/* <Temple
         scale={0.5}
         position={[-50, 2.5, -85]}
         rotation={[0,-Math.PI/2, 0]}
-      />
+      /> */}
 
     <Cabin
         scale={10}

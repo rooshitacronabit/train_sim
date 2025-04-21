@@ -120,7 +120,7 @@ export const trackPoints = [
   // { start: -3.8, end: -4.8, jointStart: -10, jointEnd: -8, joint: [trackspace*  0, trackspace*-19.6, trackspace* 1, trackspace*-3], line: 2, curvePath: "curveRight", trackLength: railSegmentLength *2 },
   
 
-  {start:-9.537, end:-10.537, jointStart:1, jointEnd:3,joint: [0, -83, 0, -83], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI/2)+0.08, 0]},//botad straight path
+  // {start:-9.537, end:-10.537, jointStart:1, jointEnd:3,joint: [0, -83, 0, -83], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI/2)+0.08, 0]},//botad straight path
 
   // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, -69, 0, -80], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight" }, 
 
@@ -137,13 +137,24 @@ export const trackPoints = [
 
 
 
-  { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 6, 0, 70], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (1*Math.PI),0] },
+  // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 6, 0, 70], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (1*Math.PI),0] },
   
-  { start: -5.08565, end: -6.08565, jointStart: 15, jointEnd: 2, joint: [0, 140, 0, 79], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (0.93*Math.PI),0] },
+  // { start: -5.08565, end: -6.08565, jointStart: 15, jointEnd: 2, joint: [0, 140, 0, 79], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (0.93*Math.PI),0] },
+
+  { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 6, 0, 70], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveLeft",trackRotation: [0, (0*Math.PI),0] },
+  
+  { start: -5.168, end: -6.168, jointStart: 15, jointEnd: 2, joint: [0, 170, 0, 81], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveLeft",trackRotation: [0, -0.3 ,0] },
 
   {
-    start: -14.55, end: -15.55, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*52, trackspace* 0, trackspace*49.60], line: 3 ,curvePath: "straight"
-  }
+    start: -15, end: -16, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*63.5, trackspace* 0, trackspace*60.45], line: 3 ,curvePath: "straight"
+  },
+
+
+  // { start: 5, end: -5, jointStart: 5, jointEnd: -4, joint: [trackspace * 2, trackspace * 9, trackspace * 2, trackspace * 9], line: 6 },
+
+  { start: -4.25, end: -5.25, jointStart: -4.25, jointEnd: -5.25, joint: [trackspace*  -28, trackspace*-38, trackspace* -28, trackspace*-38], line: 2, trackLength: railSegmentLength * 2,trackRotation: [0, (0.5*Math.PI),0]  },
+
+  // { start: -9, end: -10, jointStart: -9, jointEnd: -10, joint: [trackspace*  -22.9, trackspace*-32.9, trackspace* -22.9, trackspace*-32.9], line: 2,trackRotation: [0, (0.5*Math.PI),0]  },
 
   // { start: -4.5, end: -5.5, jointStart: 2, jointEnd: -2, joint: [0, 70, 0, 170], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (-1*Math.PI/2),0] }, 
 
@@ -151,7 +162,8 @@ export const trackPoints = [
   // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 11.2, 0, 297], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveLeft", trackAngle: "curve2" },
   // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 6, 0, 170], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveLeft", trackAngle: "curve3"},
 
-  // {start:-7.46, end:-6.46, jointStart:-1, jointEnd:3,joint: [0, -78, 0, -78], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI / 2.1), 0]},
+  {start:-8.5, end:-9.5, jointStart:-1, jointEnd:3,joint: [0, -144, 0, -144], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI / 2), 0]},
+  {start:-8.5, end:-9.5, jointStart:-1, jointEnd:3,joint: [0, -174, 0, -174], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI / 2), 0]},
 
 ];
 

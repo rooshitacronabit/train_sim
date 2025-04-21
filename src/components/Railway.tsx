@@ -118,11 +118,12 @@ export function Railway() {
             new THREE.Vector3(
               
               // curvePath == "curveLeft"&&(trackAngle == "curve1" || trackAngle == "curve2" || trackAngle == "curve4"|| trackAngle == "curve5"||trackAngle != undefined) ? (i - 2) * trackLength
-              //   : trackAngle == "curve3" ? (i - 20) * trackLength 
+              //   : trackAngle == "curve3" ? (i - 1) * trackLength 
               //   : curvePath == "straight1" ? (i) * trackLength 
               //   : (i - 1) * trackLength,
               trackAngle != undefined && curvePath == "curveLeft"
                 ? (i ) * trackLength
+                : trackAngle != undefined && curvePath == "curveRight" ? (i ) * trackLength
                 : (i - 1) * trackLength,
               0,
               ez
@@ -138,6 +139,79 @@ export function Railway() {
         }
       }
     };
+//   const paths = useMemo(() => {
+//     const res: RailPathProps[] = [];
+
+// const addLine = ({
+//       face = "forward",
+//       start,
+//       end,
+//       jointStart,
+//       jointEnd,
+//       joint,
+//       line,
+//       curvePath = "normal",
+//       trackLength = railSegmentLength,
+//       rotation = 0,
+//       trackAngle,
+//       trackRotation = [0, 0, 0],
+//     }: {
+//       face?: string;
+//       start: number;
+//       end: number;
+//       jointStart: number;
+//       jointEnd: number;
+//       joint: number[];
+//       line: number;
+//       curvePath?: string;
+//       trackLength?: number;
+//       rotation?: number;
+//       trackAngle?: string;
+//       trackRotation?: any;
+//     }) => {
+//       if (face == "reverse") {
+//         for (let i = start; i < end; i++) {
+//           const sz = i === jointStart ? joint[0] : joint[1];
+//           const ez = i === jointEnd ? joint[2] : joint[3];
+//           res.push({
+//             start: new THREE.Vector3(i * trackLength, 0, sz),
+//             end: new THREE.Vector3(
+//               trackAngle != undefined && curvePath == "curveLeft"
+//                 ? i * trackLength
+//                 : (i + 1) * trackLength,
+//               // (i + 1) * trackLength,
+//               0,
+//               ez
+//             ),
+//             line,
+//             rotation: sz !== ez ? 90 : 0,
+//             curvePath,
+//             trackAngle,
+//             trackRotation,
+//           });
+//         }
+//       } else {
+//         for (let i = start; i > end; i--) {
+//           const sz = i === jointStart ? joint[0] : joint[1];
+//           const ez = i === jointEnd ? joint[2] : joint[3];
+//           res.push({
+//             start: new THREE.Vector3(i * trackLength, 0, sz),
+//             end: new THREE.Vector3(
+//               trackAngle != undefined && curvePath == "curveLeft"
+//                 ? i * trackLength
+//                 : (i - 1) * trackLength,
+//               0,
+//               ez
+//             ),
+//             line,
+//             rotation: sz !== ez ? 90 : 0,
+//             curvePath,
+//             trackAngle,
+//             trackRotation,
+//           });
+//         }
+//       }
+//     };
 
     // Generate paths based on configurations
     trackPoints.forEach((config) => addLine(config));
@@ -152,6 +226,9 @@ export function Railway() {
     setRailPaths?.(refs);
     return res;
   }, [setRailPaths, railSegmentLength, trackspace]);
+
+
+
 
   const signals = useMemo(() => {
     // const res: SignalProps[] = [];

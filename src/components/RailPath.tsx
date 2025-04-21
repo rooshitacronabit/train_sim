@@ -125,7 +125,7 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
     }, [start, end]);
 
     const trackCurveValue = {
-      curveRight: [0.3, 1], // 0.3 //0.1
+      curveRight: [0.5, 1], // 0.3 //0.1
       curveLeft: [0.5, -1],
       straight: [0, -1],
       specialCurve1: [0.1, -1],
@@ -146,8 +146,8 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
           if (trackAngle == "curve1") {
             x =
               start.clone().sub(center).x > 0
-                ? start.clone().sub(center).x - 60
-                : start.clone().sub(center).x + 300;
+                ? start.clone().sub(center).x - 160
+                : start.clone().sub(center).x + 100;
             y = end.clone().sub(center).y;
             z = end.clone().sub(center).z;
           } else if (trackAngle == "curve2") {
@@ -161,17 +161,31 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
             x =
               start.clone().sub(center).x > 0
                 ? start.clone().sub(center).x - 8
-                : start.clone().sub(center).x + 8;
+                : start.clone().sub(center).x + 8.4;
             y = end.clone().sub(center).y;
-            z = end.clone().sub(center).z;
+            z = end.clone().sub(center).z ;
           }
-          center1 =
-            trackAngle == "curve1"
-              ? new THREE.Vector3(x + 80, y, z - 20)
-              : trackAngle == "curve2"
+          // center1 =
+          //   trackAngle == "curve1"
+          //     ? new THREE.Vector3(x + 80, y, z - 20)
+          //     : trackAngle == "curve2"
+          //       ? new THREE.Vector3(x, y, z)
+          //       : end.clone().sub(center);
+          // center2 = new THREE.Vector3(x + 25, y, z);
+
+
+          center1 =  new THREE.Vector3(x, y, z);
+
+          center2 = trackAngle == "curve1"
+            ? end.clone().sub({ x: center.x + 18, y: center.y, z: center.z })
+            : trackAngle == "curve2"
+              ? end.clone().sub({ x: center.x - 17, y: center.y, z: center.z + 25 })
+              : trackAngle == "curve4"
                 ? new THREE.Vector3(x, y, z)
-                : end.clone().sub(center);
-          center2 = new THREE.Vector3(x + 25, y, z);
+                : trackAngle == "curve20"
+                ? end.clone().sub(center)
+                  : end.clone().sub(center);
+
         } else {
           if (trackAngle == "curve1") {
             x =
@@ -180,7 +194,14 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
                 : end.clone().sub(center).x + 100;
             y = start.clone().sub(center).y;
             z = start.clone().sub(center).z + 5;
-          } else if (trackAngle == "curve2") {
+          } else if (trackAngle == "curve20") {
+            x =
+              end.clone().sub(center).x > 0
+                ? end.clone().sub(center).x - 5
+                : end.clone().sub(center).x - 8;
+            y = start.clone().sub(center).y;
+            z = start.clone().sub(center).z ;
+          }else if (trackAngle == "curve2") {
             x =
               end.clone().sub(center).x > 0
                 ? end.clone().sub(center).x - 8
@@ -197,15 +218,15 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
           } else if (trackAngle == "curve4") {
             x =
               end.clone().sub(center).x > 0
-                ? end.clone().sub(center).x
-                : end.clone().sub(center).x - 20;
+                ? end.clone().sub(center).x - 200
+                : end.clone().sub(center).x + 200;
             y = start.clone().sub(center).y;
-            z = start.clone().sub(center).z - 60;
+            z = start.clone().sub(center).z - 160;
           } else {
             x =
               end.clone().sub(center).x > 0
                 ? end.clone().sub(center).x - 8
-                : end.clone().sub(center).x - 8;
+                : end.clone().sub(center).x + 8.4;
             y = start.clone().sub(center).y;
             z = start.clone().sub(center).z;
           }
@@ -216,7 +237,9 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
             : trackAngle == "curve2"
               ? end.clone().sub({ x: center.x - 17, y: center.y, z: center.z + 25 })
               : trackAngle == "curve4"
-                ? new THREE.Vector3(x, y, z)
+                ? new THREE.Vector3(x - 50, y, z - 100)
+                : trackAngle == "curve20"
+                ?  new THREE.Vector3(x, y, z + 10)
                   : end.clone().sub(center);
 
         }
@@ -260,17 +283,50 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
             y = start.clone().y;
             z = start.clone().z;
           } else {
-            x = start.clone().x > 0 ? start.clone().x - 8 : start.clone().x + 8;
+            x = start.clone().x > 0 ? start.clone().x - 1 : start.clone().x + 8;
             y = end.clone().y;
             z = end.clone().z;
           }
-          center1 =
-            trackAngle == "curve1"
-              ? new THREE.Vector3(x + 80, y, z - 20)
-              : trackAngle == "curve2"
-              ? new THREE.Vector3(x, y, z)
-              : end.clone();
-          center2 = new THREE.Vector3(x + 25, y, z);
+          // center1 =
+          //   trackAngle == "curve1"
+          //     ? new THREE.Vector3(x + 80, y, z - 20)
+          //     : trackAngle == "curve2"
+          //     ? new THREE.Vector3(x, y, z)
+          //     : end.clone();
+          // center2 = new THREE.Vector3(x + 25, y, z);
+          // center2 = end.clone();
+
+
+          // center1 = new THREE.Vector3(x - 96, y, z - 61);
+          // // center1 = trackAngle == "curve1"
+          // //     ? new THREE.Vector3(x + 80, y, z - 20)
+          // //     : trackAngle == "curve2"
+          // //     ? new THREE.Vector3(x, y, z)
+          // //     : end.clone();
+          // center2 =
+          //   trackAngle == "curve1"
+          //     ? new THREE.Vector3(x, y, z + 270)
+          //     : trackAngle == "curve2"
+          //     ? new THREE.Vector3(x, y, z + 260)
+          //     : end.clone();
+
+
+          center1 =  new THREE.Vector3(x, y, z);
+
+          // center2 = trackAngle == "curve1"
+          //   ? end.clone().sub({ x: center.x + 18, y: center.y, z: center.z })
+          //   : trackAngle == "curve2"
+          //     ? end.clone().sub({ x: center.x - 17, y: center.y, z: center.z + 25 })
+          //     : trackAngle == "curve4"
+          //       ? new THREE.Vector3(x, y, z)
+          //       : trackAngle == "curve20"
+          //       ? end.clone().sub(center)
+          //         : end.clone().sub(center);
+
+          center2 = new THREE.Vector3(x - 80 , y, z - 2);
+
+          console.log(x - 10,y,z-10);
+
         } else {
           if (trackAngle == "curve1") {
             x = end.clone().x > 0 ? end.clone().x - 8 : end.clone().x - 120;
@@ -280,6 +336,20 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
             x = end.clone().x > 0 ? end.clone().x - 8 : end.clone().x - 110;
             y = start.clone().y;
             z = start.clone().z;
+          }else if (trackAngle == "curve20") {
+            x = end.clone().x > 0 ? end.clone().x - 8 : end.clone().x - 120;
+            y = start.clone().y;
+            z = start.clone().z;
+            console.log(x );
+            console.log(y);
+            console.log(z);
+          }else if (trackAngle == "curve3") {
+            x =
+              end.clone().sub(center).x > 0
+                ? end.clone().sub(center).x - 100
+                : end.clone().sub(center).x - 80;
+            y = start.clone().sub(center).y;
+            z = start.clone().sub(center).z;
           } else {
             x = end.clone().x > 0 ? end.clone().x - 8 : end.clone().x + 8;
             y = start.clone().y;
@@ -291,6 +361,10 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
               ? new THREE.Vector3(x, y, z + 270)
               : trackAngle == "curve2"
               ? new THREE.Vector3(x, y, z + 260)
+              : trackAngle == "curve4"?
+              new THREE.Vector3(x - 90, y, z - 50)
+              :trackAngle == "curve3"?
+              end.clone().sub(center)
               : end.clone();
         }
 

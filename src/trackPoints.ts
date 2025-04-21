@@ -32,8 +32,14 @@ export const trackPoints = [
 
 
   // line 1
-  { start: 3, end: -7, jointStart: 3, jointEnd: -10, joint: [trackspace, 0, trackspace, 0], line: 1 },
-  { start: -7, end: -8, jointStart: 3, jointEnd: 1, joint: [0, 0, 0, -62], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1 },
+  { start: 3, end: -8, jointStart: 3, jointEnd: -10, joint: [trackspace, 0, trackspace, 0], line: 1 },
+
+
+  // { start: -7, end: -8, jointStart: 3, jointEnd: 1, joint: [0, 0, 0, -20], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1 },
+
+  { start: -4, end: -5 , jointStart: 3, jointEnd: 1, joint: [0, 0, 0, -69], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 2},
+
+  // { start: -9, end: -10, jointStart: 0, jointEnd: 1, joint: [-10, 0, 0, -90], line: 1, curvePath: "curveLeft", trackAngle:"curve3",trackLength: railSegmentLength * 1},
 
   { start: -2, end: -3, jointStart: -2, jointEnd: -2, joint: [0, trackspace, trackspace, trackspace], line: 1 }, // joint 1 
   { start: -3, end: -4, jointStart: -3, jointEnd: -3, joint: [0, trackspace, trackspace, trackspace], line: 1 }, // joint 2
@@ -86,35 +92,66 @@ export const trackPoints = [
   // // line 10
   { start: 0, end: -4, jointStart: 15, jointEnd: -3, joint: [0, trackspace * -4, 0, trackspace * -4], line: 9, },
 
-  { face:"reverse",start: -14, end: -12, jointStart: -14, jointEnd: -12, joint: [trackspace * 1, trackspace * -3, trackspace * -1, trackspace * -3], line: 2 },
+  //Line 0_1
+  { start: -13, end: -14, jointStart: 15, jointEnd: -10, joint: [trackspace * 0, trackspace * -3, trackspace * 0, trackspace * 1], line: 2 },  
 
-  { face:"reverse",start: -13, end: -12, jointStart: -13, jointEnd: -12, joint: [trackspace*  1, trackspace*-3, trackspace* -2, trackspace*-3], line: 2 },
+  { start: -12, end: -13, jointStart: -10, jointEnd: -11, joint: [trackspace * 0, trackspace * -3, trackspace * 0, trackspace * -3], line: 2 },
+
+  { start: -12, end: -13, jointStart: -9, jointEnd: -10, joint: [trackspace*  1, trackspace*-3, trackspace* -2, trackspace*1], line: 2 },
 
 
-  { face:"reverse",start: -6, end: -5, jointStart: 0, jointEnd: -6, joint: [trackspace*  -10, trackspace*-3, trackspace* -30, trackspace*0], line: 2, curvePath: "curveLeft", trackLength: railSegmentLength *2 },
+  // { start: -5, end: -6, jointStart: -11, jointEnd: -6, joint: [trackspace*  2.85, trackspace*-20, trackspace* -20, trackspace*-3], line: 2, curvePath: "curveLeft", trackAngle:"curve20" ,trackLength: railSegmentLength *2 },
 
+  { start: -5, end: -6, jointStart: -10, jointEnd: -8, joint: [-0, -69, 1 , -21], trackLength: railSegmentLength * 2, line: 2, curvePath: "curveRight" },  
+
+  // { start: -10, end: -11, jointStart: -9, jointEnd: -10, joint: [trackspace*  -12, trackspace*-3, trackspace* -13, trackspace*1], line: 2, trackAngle:[0,Math.PI/2,0] },
+
+
+
+  // { start: -3.8, end: -4.8, jointStart: -10, jointEnd: -8, joint: [trackspace*  0, trackspace*-9.6, trackspace* 1, trackspace*-7], line: 2, curvePath: "curveRight", trackLength: railSegmentLength *2.5 },
+  // { start: -6.8, end: -7.8, jointStart: -10, jointEnd: -8, joint: [trackspace*  10, trackspace*-20, trackspace* 1, trackspace*-7], line: 2, curvePath: "curveRight", trackLength: railSegmentLength *1.50, trackAngle:"curve4" },
 
 // Line 0_2
 
-  { face:"reverse",start: -13, end: -12, jointStart: -13, jointEnd: -12, joint: [trackspace*  -3, trackspace*-7, trackspace* -10, trackspace*-7], line: 2 },
-
-
-  { face:"reverse",start: -6, end: -5, jointStart: 0, jointEnd: -6, joint: [trackspace*  2, trackspace*-7, trackspace* -50, trackspace*2], line: 2, curvePath: "curveLeft", trackLength: railSegmentLength *2 },
+  { start: -12, end: -13, jointStart: -10, jointEnd: -11, joint: [trackspace*  0, trackspace*-7, trackspace* 0, trackspace*-3], line: 2 },
+  { start: -5, end: -6, jointStart: -10, jointEnd: -8, joint: [0, -69, 1 , -9], trackLength: railSegmentLength * 2, line: 2, curvePath: "curveRight" },
+  // { start: -11, end: -12, jointStart: -10, jointEnd: -9, joint: [0, -9, 0 , -9], trackLength: railSegmentLength * 1, line: 2, curvePath: "straight"},
+  // { start: -6.34, end: -7.34, jointStart: -9, jointEnd: -8, joint: [0, -16.2, 0 , -9], trackLength: railSegmentLength * 1.5, line: 2, curvePath: "curveRight"},
+  // { start: -3.8, end: -4.8, jointStart: -10, jointEnd: -8, joint: [trackspace*  0, trackspace*-19.6, trackspace* 1, trackspace*-3], line: 2, curvePath: "curveRight", trackLength: railSegmentLength *2 },
   
+
+  {start:-9.537, end:-10.537, jointStart:1, jointEnd:3,joint: [0, -83, 0, -83], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI/2)+0.08, 0]},//botad straight path
+
+  // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, -69, 0, -80], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight" }, 
 
   //Dhangadhra
 
-  { start: -15, end: -16, jointStart: -15, jointEnd: -15, joint: [trackspace*2, trackspace*5, trackspace*7, trackspace*3], line:3},
+  // { start: -15, end: -16, jointStart: -15, jointEnd: -15, joint: [trackspace*2, trackspace*5, trackspace*7, trackspace*3], line:3},
 
-  { start: -16, end: -17, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*7, trackspace* 4, trackspace*8], line: 3 ,curvePath: "straight" },
+  // { start: -16, end: -17, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*7, trackspace* 4, trackspace*8], line: 3 ,curvePath: "straight" },
 
-  { start: -17, end: -18, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*8, trackspace* 4, trackspace*9], line: 3 ,curvePath: "straight" },
+  // { start: -17, end: -18, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*8, trackspace* 4, trackspace*9], line: 3 ,curvePath: "straight" },
 
 
-  { start: -18, end: -19, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*9, trackspace* 4, trackspace*10], line: 3 ,curvePath: "straight" },
+  // { start: -18, end: -19, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*9, trackspace* 4, trackspace*10], line: 3 ,curvePath: "straight" },
 
+
+
+  { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 6, 0, 70], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (1*Math.PI),0] },
   
-  {start:-8, end:-9, jointStart:-10, jointEnd:-10, joint:[trackspace*0, trackspace*-21, trackspace*0, trackspace*-60], line: 1, curvePath:"straight"},
+  { start: -5.08565, end: -6.08565, jointStart: 15, jointEnd: 2, joint: [0, 140, 0, 79], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (0.93*Math.PI),0] },
+
+  {
+    start: -14.55, end: -15.55, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*52, trackspace* 0, trackspace*49.60], line: 3 ,curvePath: "straight"
+  }
+
+  // { start: -4.5, end: -5.5, jointStart: 2, jointEnd: -2, joint: [0, 70, 0, 170], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveRight",trackRotation: [0, (-1*Math.PI/2),0] }, 
+
+
+  // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 11.2, 0, 297], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveLeft", trackAngle: "curve2" },
+  // { start: -5, end: -6, jointStart: 15, jointEnd: 2, joint: [0, 6, 0, 170], trackLength: railSegmentLength * 3, line: 3, curvePath: "curveLeft", trackAngle: "curve3"},
+
+  // {start:-7.46, end:-6.46, jointStart:-1, jointEnd:3,joint: [0, -78, 0, -78], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI / 2.1), 0]},
 
 ];
 

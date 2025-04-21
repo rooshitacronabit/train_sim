@@ -16,7 +16,7 @@ import { OverBridge } from "./OverBridge.tsx";
 import { railSegmentLength, trackspace } from "../common";
 import { useGlobalContext, useToggledComponent } from "../Hooks";
 import { Station } from "./buildings/Station.tsx";
-import { Railway } from "./Railway";
+import { Railway } from "./Railway.jsx";
 import { Train } from "./Train";
 import { Camera } from "./Camera";
 import { Terrain } from "./landscape/Terrain";
@@ -91,11 +91,16 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
     }
 
 
-    if (
-      currentLine == "5 line"||currentLine=="9-line"||currentLine=="10-line"
-    ) {
-      return new THREE.Vector3(railSegmentLength * -29, trainHeight, trackspace );
+    if (currentLine == "5 line"||currentLine == "9-line"  ) {
+      return new THREE.Vector3(railSegmentLength * -28, trainHeight, trackspace );
     }
+
+    // if(currentLine=="10-line" )
+    // {
+    //   return new THREE.Vector3(railSegmentLength * -10, trainHeight, trackspace -66);
+    // }
+
+
 
     if(currentLine == "6 line")
     {
@@ -109,7 +114,7 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
 
     if(currentLine == "7-line")
       {
-        return new THREE.Vector3(railSegmentLength * 0, trainHeight, trackspace +12);
+        return new THREE.Vector3(railSegmentLength * -14, trainHeight, trackspace +3);
       }
 
       if(currentLine == "7 line")
@@ -216,14 +221,14 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         restThreshold={0.15}
       ></CameraControls>
 
-      <Terrain
+      {/* <Terrain
         elevation="./terrain/height_create1.jpg"
         diffuse="./terrain/terrin_ground.jpg"
         size={2800}
         resolution={2048}
         height={30}
         position={[400, -17.25, 10]}
-      />
+      /> */}
 
   <OverBridge
         scale={1}

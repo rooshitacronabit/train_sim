@@ -113,10 +113,8 @@ export function Ui() {
       name == "3 line"||
       name == "5 line"||
       name == "6 line"||
-      name == "7 line"
-      // name == "6-line"
-      // name == "9-line"||
-      // name == "10-line"
+      name == "7 line"||
+      name == "9-line"
       ?setIsReverse(true)
       :setIsReverse(false);
   

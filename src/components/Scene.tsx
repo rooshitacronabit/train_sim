@@ -91,7 +91,9 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
     }
 
 
-    if (currentLine == "5 line"||currentLine == "9-line"  ) {
+    if (currentLine == "5 line"
+      // ||currentLine == "9-line"  
+    ) {
       return new THREE.Vector3(railSegmentLength * -28, trainHeight, trackspace );
     }
 
@@ -102,10 +104,15 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
 
 
 
-    if(currentLine == "6 line")
+    if(currentLine == "9-line")
     {
-      return new THREE.Vector3(railSegmentLength * -29, trainHeight, trackspace +3);
+      return new THREE.Vector3(railSegmentLength * -15, trainHeight, trackspace );
     }
+
+    if(currentLine == "6 line")
+      {
+        return new THREE.Vector3(railSegmentLength * -29, trainHeight, trackspace +3);
+      }
 
     if(currentLine == "6-line")
     {
@@ -114,7 +121,7 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
 
     if(currentLine == "7-line")
       {
-        return new THREE.Vector3(railSegmentLength * -14, trainHeight, trackspace +3);
+        return new THREE.Vector3(railSegmentLength * 0, trainHeight, trackspace +12);
       }
 
       if(currentLine == "7 line")
@@ -130,13 +137,19 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
     //   return new THREE.Vector3(railSegmentLength * -0.5, trainHeight, trackspace-15);
     // }
 
+    if (
+      currentLine == "3-line" ||
+      currentLine == "4-line"
+    ) {
+      return new THREE.Vector3(railSegmentLength * -6.5, trainHeight, trackspace-3);
+    }
+
 
     if (
       currentLine == "3 line" ||
-      currentLine == "4 line" || currentLine == "3-line" ||
-      currentLine == "4-line"
+      currentLine == "4 line"
     ) {
-      return new THREE.Vector3(railSegmentLength * -6, trainHeight, trackspace-3);
+      return new THREE.Vector3(railSegmentLength * -9, trainHeight, trackspace-152);
     }
 
     return new THREE.Vector3(

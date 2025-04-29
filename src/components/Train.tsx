@@ -85,7 +85,7 @@ export function Train({ position }: TrainProps) {
   const rotation = useMemo(() => {
     return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line"||currentLine == "9-line")
       ? new THREE.Euler(0, Math.PI, 0)
-      : currentLine == "1 line" || currentLine == "2 line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7-line"||currentLine == "10-line" 
+      : currentLine == "1 line" || currentLine == "2 line"|| currentLine == "3-line"|| currentLine == "4-line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7-line"||currentLine == "10-line" 
       ? new THREE.Euler(0, Math.PI, 0)
       : new THREE.Euler(0, 0, 0);
   }, [isReverse, currentLine]);
@@ -161,7 +161,7 @@ export function Train({ position }: TrainProps) {
   const ballColliderPosition = useMemo(() => {
     return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line"||currentLine == "9-line" )
       ? { start: new THREE.Vector3(6, 0, 0), end: new THREE.Vector3(-6, 0, 0) }
-      : currentLine == "1 line" || currentLine == "2 line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7-line"||currentLine == "10-line"
+      : currentLine == "1 line" || currentLine == "2 line"|| currentLine == "3-line"|| currentLine == "4-line"|| currentLine == "5-line"|| currentLine == "6-line"|| currentLine == "7-line"||currentLine == "10-line"
       ? { start: new THREE.Vector3(6, 0, 0), end: new THREE.Vector3(-6, 0, 0) }
       : { start: new THREE.Vector3(0, 0, 0), end: new THREE.Vector3(0, 0, 0) };
   }, [isReverse, currentLine]);

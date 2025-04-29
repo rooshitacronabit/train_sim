@@ -110,7 +110,7 @@ export function Ui() {
       name == "1-line"||
       name == "2-line"||
       name == "4 line"||
-      name == "3 line"||
+      // name == "3 line"||
       name == "5 line"||
       name == "6 line"||
       name == "7 line"||

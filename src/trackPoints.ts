@@ -78,10 +78,10 @@ export const trackPoints = [
 
   { start: -9, end: -10, jointStart: 2, jointEnd: -8, joint: [0, 6, 0, 160], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveLeft",trackAngle:"curve2", trackRotation: [0, (0*Math.PI),0] },
   
-  { start: -9, end: -10, jointStart: 15, jointEnd: -2, joint: [0, 194, 0, 95], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveLeft",trackRotation: [0, 0 ,0] },
+  // { start: -9, end: -10, jointStart: 15, jointEnd: -2, joint: [0, 194, 0, 95], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveLeft",trackRotation: [0, 0 ,0] },
 
   {
-    start: -15, end: -16, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*63.5, trackspace* 0, trackspace*60.45], line: 3 ,curvePath: "straight"
+    start: -16.84, end: -17.84, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*53.32, trackspace* 0, trackspace*53.32], line: 3 ,curvePath: "straight"
   },
 
 

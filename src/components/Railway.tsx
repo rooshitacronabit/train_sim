@@ -648,29 +648,38 @@ export function Railway() {
 
   const electricPoleStation = useMemo(() => {
     return [
+      
+      new THREE.Vector3(-15, 0, -13.5),
+      new THREE.Vector3(-60, 0, -13.5),
+      new THREE.Vector3(-45, 0, -13.5),
+      new THREE.Vector3(-30, 0, -13.5),
+      new THREE.Vector3(-75, 0, 1.5),   
+      new THREE.Vector3(-60, 0, 1.5),     
       new THREE.Vector3(-45, 0, 1.5),
-      new THREE.Vector3(-35, 0, 1.5),
+      new THREE.Vector3(-30, 0, 1.5),
       new THREE.Vector3(-15, 0, 1.5),
       new THREE.Vector3(0, 0, 1.5),
       new THREE.Vector3(15, 0, 1.5),
-      new THREE.Vector3(25, 0, 1.5),
-      new THREE.Vector3(-45, 0, 8.5),
-      new THREE.Vector3(-35, 0, 8.5),
-      new THREE.Vector3(-15, 0, 8.5),
-      new THREE.Vector3(0, 0, 8.5),
-      new THREE.Vector3(15, 0, 8.5),
-      new THREE.Vector3(25, 0, 8.5),
+      new THREE.Vector3(30, 0, 1.5),
+      new THREE.Vector3(45, 0, 1.5),
+
     ];
   }, []);
 
   const electricPoleStation1 = useMemo(() => {
     return [
       new THREE.Vector3(-45, 0, -16),
-      new THREE.Vector3(-35, 0, -16),
+      new THREE.Vector3(-30, 0, -16),
       new THREE.Vector3(-15, 0, -16),
       new THREE.Vector3(0, 0, -16),
       new THREE.Vector3(15, 0, -16),
-      new THREE.Vector3(25, 0, -16),
+      new THREE.Vector3(30, 0, -16),
+      new THREE.Vector3(-45, 0, -24.5),
+      new THREE.Vector3(-30, 0, -24.5),
+      new THREE.Vector3(-15, 0, -24.5),
+      new THREE.Vector3(0, 0, -24.5),
+      new THREE.Vector3(15, 0, -24.5),
+      new THREE.Vector3(30, 0, -24.5),
     ];
   }, []);
 
@@ -731,7 +740,7 @@ export function Railway() {
       {electricPoleStation.map((pos, i) => (
         <StationPole
           key={`station-pole-${i}`}
-          scale={[0.3, 0.25, 0.4]}
+          scale={[0.3, 0.25, 0.28]}
           position={pos}
         />
       ))}

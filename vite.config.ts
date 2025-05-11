@@ -12,10 +12,21 @@ export default defineConfig({
       input: 'index.html',
     },
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost/train_sim_sunr/server/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   // server: {
   //   host: '192.168.1.24',
   //   port: 3000
   // }
 
 });
+
+
 

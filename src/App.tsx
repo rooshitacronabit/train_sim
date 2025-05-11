@@ -374,9 +374,9 @@ export default function App() {
 
         if (responseData.message === "Data received successfully") {
           console.log("Data received successfully");
+          console.log(name, department);
           localStorage.setItem("name", name);
           setUserSubmitted(true);
-          console.log("User submitted");
         } else {
           alert("Error: " + responseData.message);
         }
@@ -497,8 +497,8 @@ export default function App() {
       <Canvas>
         <Scene onLoaded={() => setIsSceneLoaded(true)} />
       </Canvas>
-
       <Ui name={name} department={department} />
+      
     </GlobalContext.Provider>
   );
 }

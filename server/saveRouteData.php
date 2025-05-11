@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
+file_put_contents("php://stderr", print_r($_POST, true));
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -26,16 +27,19 @@ if ($conn->connect_error) {
 }
 
 // Check if the form data is received
-if (isset($_POST['name'], $_POST['department'], $_POST['state'], $_POST['route'], $_POST['line'])) {
+if (isset($_POST['name'], $_POST['department'], $_POST['route'], $_POST['line'], $_POST['startTime'], $_POST['endTime'], $_POST['totalTime'])) {
     $name = $conn->real_escape_string($_POST['name']);
     $department = $conn->real_escape_string($_POST['department']);
-    $state = $conn->real_escape_string($_POST['state']);
     $route = $conn->real_escape_string($_POST['route']);
     $line = $conn->real_escape_string($_POST['line']);
+    $startTime = $conn->real_escape_string($_POST['startTime']);
+    $endTime = $conn->real_escape_string($_POST['endTime']);
+    $totalTime = $conn->real_escape_string($_POST['totalTime']);
+
 
     // SQL query to insert data into the database
-    $sql = "INSERT INTO route_data1 (name, department, state, route, line) 
-            VALUES ('$name', '$department', '$state', '$route', '$line')";
+    $sql = "INSERT INTO route_data1 (name, department, route, line, start_time, end_time, total_time) 
+            VALUES ('$name', '$department', '$route', '$line', '$startTime', '$endTime', '$totalTime')";
 
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["success" => true, "message" => "Route data saved successfully"]);

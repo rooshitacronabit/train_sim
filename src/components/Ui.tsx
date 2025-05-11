@@ -150,34 +150,68 @@ export function Ui({name,department}) {
 //   }
 // }
 
-async function saveRouteData(name, department) {
- // Debugging log
+// async function saveRouteData(name, department) {
+//  // Debugging log
+//   const formData = new FormData();
+//   formData.append("name", name);
+//   formData.append("department", department);
+//   try {
+//     const response = await fetch('http://localhost/train_sim_sunr/server/saveRouteData.php', {
+//       method: 'POST',
+//       // headers: {
+//       //   'Content-Type': 'application/json',
+//       // },s
+//       body: formData,
+//     });
+
+//     console.log("Response status:", response.status); // Log the response status
+
+//     if (!response.ok) {
+//       const errorText = await response.text();
+//       console.error("Error response from backend:", errorText); // Log the error response
+//       throw new Error(`Error saving data: HTTP status ${response.status}`);
+//     }
+
+//     const result = await response.json();
+//     console.log("Data saved successfully:", result); // Log the success response
+//   } catch (error) {
+//     console.error("Error saving data:", error.message); // Log the error
+//   }
+// }
+
+const saveRouteData = async () => {
+  const name = localStorage.getItem("name") || "";
+  const department = localStorage.getItem("department") || "";
+
   const formData = new FormData();
   formData.append("name", name);
   formData.append("department", department);
+  formData.append("state", state);
+  const route = selctedRootName; // Assuming 'selctedRootName' holds the route information
+  formData.append("route", route);
+  formData.append("line", currentLine);
+
   try {
-    const response = await fetch('http://localhost/train_sim_sunr/server/saveRouteData.php', {
-      method: 'POST',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },s
+    const res = await fetch("http://localhost/train_sim_sunr/server/saveRouteData.php", {
+      method: "POST",
       body: formData,
     });
 
-    console.log("Response status:", response.status); // Log the response status
+    if (res.ok) {
+      const responseData = await res.json();
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Error response from backend:", errorText); // Log the error response
-      throw new Error(`Error saving data: HTTP status ${response.status}`);
+      if (responseData.message === "Route data saved successfully") {
+        console.log("Route data saved successfully");
+      } else {
+        alert("Error: " + responseData.message);
+      }
+    } else {
+      alert("Failed to save route data");
     }
-
-    const result = await response.json();
-    console.log("Data saved successfully:", result); // Log the success response
-  } catch (error) {
-    console.error("Error saving data:", error.message); // Log the error
+  } catch (err) {
+    console.error("Error saving route data", err);
   }
-}
+};
 
 
   // const updateCurRoot = useCallback(
@@ -257,7 +291,7 @@ async function saveRouteData(name, department) {
         setRailWayRoot(railwayRoots[Routename]?.lines);
         setIsDropdownOpen(false);
     
-        saveRouteData(name, department);
+        saveRouteData();
           // name,
           // department,
           // selectedRoute: Routename,
@@ -362,13 +396,7 @@ async function saveRouteData(name, department) {
           setTotalTime(duration);
         }
     
-        // await saveRouteData(name, department,
-          // selectedRoute: selctedRootName,
-          // selectedLine: Linename,
-          // startTime: startTime || "", // may still be null
-          // endTime: now,
-          // totalTime: duration
-        // );
+        await saveRouteData();
     
         // Update reverse direction if needed
         const reverseLines = ["1-line", "2-line", "4 line", "5 line", "6 line", "7 line", "9-line"];

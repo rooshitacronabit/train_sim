@@ -16,8 +16,12 @@ import { Horn } from "./Horn";
 import Tooltip from "@mui/material/Tooltip";
 import { Autorenew, Adb, FastForward, FastRewind, Block, AltRoute, VideoCameraBack, QuestionMark, ForkRight } from '@mui/icons-material';
 
+interface UiProps {
+  name: string;
+  CLI: string;
+}
 
-export function Ui() {
+export const Ui: React.FC<UiProps> = ({ name, CLI }) => {
   const {
     trackEnd,
     camera,
@@ -44,113 +48,145 @@ export function Ui() {
   const [railRoot, setRailWayRoot] = useState([]);
   const [selctedRootName, setSelctedRootName] = useState("");
   const [initailScreen, SetInitailScreen] = useState(false)
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const[isLineDropdownOpen, setIsLineDropdownOpen] = useState(false);
+  const [startTime, setStartTime] = useState<string | null>(null);
+  const [endTime, setEndTime] = useState<string | null>(null);
+  const [totalTime, setTotalTime] = useState<string | null>(null);
   // useEffect(()=>{
   //     if(currentLine == "3 line" || currentLine == "4 line"){
   //         setIsReverse(true);
   //     }
   // },[currentLine])
 
-  const updateTrainState = useCallback(
-    (next: TrainState) => {
-      // const audioElement = document.getElementById(
-      //   "EngineAudio"
-      // ) as HTMLAudioElement;
-      // audioElement.play();
-      if (next === state || !trainStates.includes(state)) return;
-      if (!currentLine) {
-        toast("Please select a line first", { type: "warning" });
-        return;
+const saveRouteData = async ({
+  name,
+  CLI,
+  route,
+  line,
+  startTime,
+  endTime,
+  totalTime,
+}: {
+  name: string;
+  CLI: string;
+  route: string;
+  line: string;
+  startTime: string | null;
+  endTime: string | null;
+  totalTime: string | null;
+}) => {
+  console.log("Saving data:", { name, CLI, route, line, startTime, endTime, totalTime  });
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("CLI", CLI);
+  formData.append("route", route);
+  formData.append("line", line);
+  formData.append("startTime", startTime || "");
+  formData.append("endTime", endTime || "");
+  formData.append("totalTime", totalTime || "");
+
+
+  try {
+    const res = await fetch("http://localhost/train_sim_rjt/server/saveRouteData.php", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const responseData = await res.json();
+      if (responseData.message === "Route data saved successfully") {
+        console.log("Route data saved successfully");
+      } else {
+        alert("Error: " + responseData.message);
       }
+    } else {
+      alert("Failed to save route data");
+    }
+  } catch (err) {
+    console.error("Error saving route data", err);
+  }
+};
 
-      setState(next);
-      SetInitailScreen(false)
-      setIsDisabled(false)
-    },
-    [state, setState, currentLine]
-  );
+    const updateCurRoot = useCallback(
+      (Routename: string) => {
+        const now = new Date().toISOString();
+        setStartTime(now); // record start time
+    
+        setSelctedRootName(Routename);
+        setRailWayRoot(railwayRoots[Routename]?.lines);
+        setIsDropdownOpen(false);
 
-  const updateCurRoot = useCallback(
-    (name: string) => {
+      },
+      []
+    );
 
-      setSelctedRootName(name);
-      setRailWayRoot(railwayRoots[name]?.lines);
-      // const selectTag = document.getElementById(
-      //   "railwayLines"
-      // ) as HTMLSelectElement;
-      // selectTag.disabled = false;
-      // console.log("railwayRoots[name].trainPosition : ", railwayRoots[name].trainPosition);
-      // let railway_root = ["RJT-VRL", "SUNR-VRL", "SUNR-HPA"];
-      // railway_root.includes(name) ? setIsReverse(true) : setIsReverse(false);
-      // setTrainInitialPostion(railwayRoots[name].trainPosition)
-      setIsDropdownOpen(false);
-    },
-    [selctedRootName]
-  );
-  const updateCurLine = useCallback(
-    (name: string) => {
-      if (currentLine === name) {
-        return;
-      }
-      const indexes = railWayLines[name];
-      const oldIndexes =
-        railWayLines[currentLine]?.filter((i) => !indexes.includes(i)) || [];
-      if (oldIndexes.some((i) => railPaths[i].current?.isOccupied())) {
-        toast("Train is on the line", { type: "error" });
-        return;
-      }
-      setStopPhysics(false);
-      setCurrentLine(name);
-      setIsLineDropdownOpen(false);
-      // name == "1 line" ||
-      // name == "2 line" ||
+const updateCurLine = useCallback(
+  async (Linename: string) => {
+    if (currentLine === Linename) return; // Avoid redundant updates
 
-      name == "1-line" ||
-        name == "2-line" ||
-        name == "1_line" ||
-        name == "2_line" ||
-        name == "3 line" ||
-        name == "4 line" ||
-        name == "3-line" ||
-        name == "4-line"
-        // name == "5 line" ||
-        // name == "6 line" ||
-        // name == "7 line"
-        ? setIsReverse(true)
-        : setIsReverse(false);
+    const indexes = railWayLines[Linename];
+    const oldIndexes =
+      railWayLines[currentLine]?.filter((i) => !indexes.includes(i)) || [];
 
-      railPaths.forEach((ref, index) => {
-        // console.log("Rail path ",ref,index);
+    if (oldIndexes.some((i) => railPaths[i].current?.isOccupied())) {
+      toast("Train is on the line", { type: "error" });
+      return;
+    }
 
-        const railPath = ref.current;
-        if (!railPath) return;
-        if (indexes.includes(index)) {
-          railPath.enable();
-        } else {
-          railPath.disable();
-        }
-      });
+    // Update physics and line
+    setStopPhysics(false);
+    setIsLineDropdownOpen(false);
 
-      const path = new THREE.CurvePath<THREE.Vector3>();
-      indexes.forEach((index, i) => {
-        const railPath = railPaths[index]?.current;
-        // console.log("Rail paths : ",railPath.getCurve());
+    setCurrentLine(Linename); // Update the current line
 
-        if (!railPath) return;
-        path.add(railPath.getCurve());
-      });
+  },
+  [currentLine, railPaths, setStopPhysics, setCurrentLine]
+);
 
-      setPath(path);
-    },
-    [currentLine, setCurrentLine, setStopPhysics, setPath, railPaths]
-  );
+
+const handleReset = () => {
+  const now = new Date().toISOString();
+  setEndTime(now); // Record the end time
+
+  if (startTime && selctedRootName && currentLine) {
+    const durationMs = new Date(now).getTime() - new Date(startTime).getTime();
+    const duration = (durationMs / 1000).toFixed(2) + " seconds";
+    setTotalTime(duration);
+
+    // Save the data
+    saveRouteData({
+      name,
+      CLI,
+      route: selctedRootName,
+      line: currentLine,
+      startTime: startTime,
+      endTime: now,
+      totalTime: duration,
+    });
+  }
+
+  // Reload the page
+  location.reload();
+};
+const updateTrainState = useCallback(
+  (next: TrainState) => {
+    if (next === state || !trainStates.includes(state)) return;
+    if (!currentLine) {
+      toast("Please select a line first", { type: "warning" });
+      return;
+    }
+
+    setState(next); // Update the state
+    console.log("Train state updated to:", next); // Debugging log
+  },
+  [state, setState, currentLine]
+);
+
   const hideTheControll = useCallback(() => {
     setControllbar(!controllbar);
   }, [controllbar]);
-
-  const pageReolad = () => {
-    location.reload();
-  };
 
   function getState(name) {
     if (name === 'forward') {
@@ -161,9 +197,8 @@ export function Ui() {
       return <Block />;
     }
   }
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCamDropdownOpen, setIsCamDropdownOpen] = useState(false);
-  const [isLineDropdownOpen, setIsLineDropdownOpen] = useState(false);
+
   const camreView = ["station", "Cab", "Back", "Side", "Engine Top"]
   const handleMouseEnter = () => {
     setIsDropdownOpen(true);
@@ -266,7 +301,7 @@ export function Ui() {
             </button>
           ))}
          
-          <button key={"reset"} onClick={() => pageReolad()}>
+          <button key={"reset"} onClick={() => handleReset()}>
             Reset
           </button>
           <div className="spacer" />

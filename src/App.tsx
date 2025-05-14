@@ -45,6 +45,76 @@ export default function App() {
 
   // Loader State
   const [isSceneLoaded, setIsSceneLoaded] = useState(false);
+    const [userSubmitted, setUserSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [CLI, setCLI] = useState("");
+
+  const handleUserSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("user_name", name);
+    formData.append("CLI", CLI);
+
+    try {
+      const res = await fetch("http://localhost/train_sim_rjt/server/start.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const responseData = await res.json();
+
+        if (responseData.message === "Data received successfully") {
+          console.log("Data received successfully");
+          console.log(name, CLI);
+          localStorage.setItem("name", name);
+          setUserSubmitted(true);
+        } else {
+          alert("Error: " + responseData.message);
+        }
+      } else {
+        alert("Failed to submit form");
+      }
+    } catch (err) {
+      console.error("Error submitting form", err);
+    }
+  };
+
+  
+  if (!userSubmitted) {
+    return (
+      <div className="initailScreen">
+        <div className="image-container">
+          <div className="initailScreen_top">
+            <img src="./logo/railway_logo.png" alt="logo" />
+            <div className="user-form">
+              <div className="overlay-text1">
+                <h2>Enter Your Details</h2>
+                <form onSubmit={handleUserSubmit}> 
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="CLI"
+                    required
+                    value={CLI}
+                    onChange={(e) => setCLI(e.target.value)}
+                  />
+                  <button type="submit" >Start Simulation</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <GlobalContext.Provider
@@ -107,7 +177,7 @@ export default function App() {
       <Canvas>
         <Scene onLoaded={() => setIsSceneLoaded(true)} />
       </Canvas>
-      <Ui></Ui>
+      <Ui name={name} CLI={CLI} />
     </GlobalContext.Provider>
   );
 }

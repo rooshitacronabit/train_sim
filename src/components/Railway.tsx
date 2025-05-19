@@ -648,42 +648,151 @@ export function Railway() {
 
   const electricPoleStation = useMemo(() => {
     return [
+      
+      new THREE.Vector3(-15, 0, -13.5),
+      new THREE.Vector3(-60, 0, -13.5),
+      new THREE.Vector3(-45, 0, -13.5),
+      new THREE.Vector3(-30, 0, -13.5),
+      new THREE.Vector3(-75, 0, 1.5),   
+      new THREE.Vector3(-60, 0, 1.5),     
       new THREE.Vector3(-45, 0, 1.5),
-      new THREE.Vector3(-35, 0, 1.5),
+      new THREE.Vector3(-30, 0, 1.5),
       new THREE.Vector3(-15, 0, 1.5),
       new THREE.Vector3(0, 0, 1.5),
       new THREE.Vector3(15, 0, 1.5),
-      new THREE.Vector3(25, 0, 1.5),
-      new THREE.Vector3(-45, 0, 8.5),
-      new THREE.Vector3(-35, 0, 8.5),
-      new THREE.Vector3(-15, 0, 8.5),
-      new THREE.Vector3(0, 0, 8.5),
-      new THREE.Vector3(15, 0, 8.5),
-      new THREE.Vector3(25, 0, 8.5),
+      new THREE.Vector3(30, 0, 1.5),
+      new THREE.Vector3(45, 0, 1.5),
+      new THREE.Vector3(60, 0, 1.5),
+      new THREE.Vector3(120, 0, 4.2),
+      new THREE.Vector3(90, 0, 4.2),
+      new THREE.Vector3(-15, 0, 16.5),
+      new THREE.Vector3(-30, 0, 16.5),
+      new THREE.Vector3(-45, 0, 16.5),
+      new THREE.Vector3(-60, 0, 16.5),
+      new THREE.Vector3(0, 0, 16.5),
+      new THREE.Vector3(15, 0, 16.5),
+      new THREE.Vector3(30, 0, 16.5),
+      new THREE.Vector3(45, 0, 13.5),
+      new THREE.Vector3(60, 0, 10.5),
+      new THREE.Vector3(-15, 0, 28.5),
+      new THREE.Vector3(-60, 0, 28.5),
+      new THREE.Vector3(-45, 0, 28.5),
+      new THREE.Vector3(-30, 0, 28.5),
+      new THREE.Vector3(0, 0, 28.5),
+      new THREE.Vector3(15, 0, 28.5),
+      new THREE.Vector3(30, 0, 28.5),
+      new THREE.Vector3(55, 0, 28.5),
     ];
   }, []);
 
   const electricPoleStation1 = useMemo(() => {
     return [
-      new THREE.Vector3(-45, 0, -16),
-      new THREE.Vector3(-35, 0, -16),
-      new THREE.Vector3(-15, 0, -16),
-      new THREE.Vector3(0, 0, -16),
-      new THREE.Vector3(15, 0, -16),
-      new THREE.Vector3(25, 0, -16),
+      
+      new THREE.Vector3(-60, 0, 3),
+      new THREE.Vector3(-45, 0, 3),
+      new THREE.Vector3(-30, 0, 3),
+      new THREE.Vector3(-15, 0, 3),
+      new THREE.Vector3(0, 0, 3),
+      new THREE.Vector3(15, 0, 3),
+      new THREE.Vector3(30, 0, 3),
+      new THREE.Vector3(90, 0, -3.5),
+      new THREE.Vector3(-240, 0, -30.5),
+      new THREE.Vector3(-225, 0, -30.5),
+      new THREE.Vector3(-210, 0, -30.5),
+      new THREE.Vector3(-195, 0, -30.5),
+      new THREE.Vector3(-180, 0, -30.5),
+      new THREE.Vector3(-165, 0, -30.5),
+      new THREE.Vector3(-150, 0, -30.5),
+      new THREE.Vector3(-135, 0, -30.5),
+      new THREE.Vector3(-120, 0, -30.5),
+      new THREE.Vector3(-110, 0, -24.5),
+      new THREE.Vector3(-90, 0, -24.5),
+      new THREE.Vector3(-75, 0, -24.5),
+      new THREE.Vector3(-60, 0, -24.5),
+      new THREE.Vector3(-45, 0, -24.5),
+      new THREE.Vector3(-30, 0, -24.5),
+      new THREE.Vector3(-15, 0, -24.5),
+      new THREE.Vector3(0, 0, -24.5),
+      new THREE.Vector3(15, 0, -24.5),
+      new THREE.Vector3(30, 0, -24.5),
+      new THREE.Vector3(45, 0, -24.5),
+      new THREE.Vector3(60, 0, -24.5),
+      new THREE.Vector3(90, 0, -21.5),
+      new THREE.Vector3(-90, 0, -15.5),
+      new THREE.Vector3(-90, 0, -42.5),
+      new THREE.Vector3(-135, 0, -3.5),
+      new THREE.Vector3(-150, 0, -0.5),
+      new THREE.Vector3(-165, 0, -0.5),
+      new THREE.Vector3(-180, 0, -0.5),
+      new THREE.Vector3(-195, 0, -0.5),
+      new THREE.Vector3(-210, 0, -0.5),
+      new THREE.Vector3(-225, 0, -0.5),
+      new THREE.Vector3(-240, 0, -0.5),
+      new THREE.Vector3(-255, 0, -0.5),
+      new THREE.Vector3(-270, 0, -0.5),
+      new THREE.Vector3(-285, 0, -0.5),
+      new THREE.Vector3(-300, 0, -0.5),
+      new THREE.Vector3(-315, 0, -0.5),
+      new THREE.Vector3(-330, 0, -0.5),
+      new THREE.Vector3(-343, 0, -10.5),
+
     ];
   }, []);
 
   const electricPoleYard = useMemo(() => {
     return [
-      new THREE.Vector3(340, 0, 0.3),
-      new THREE.Vector3(360, 0, 0.3),
-      new THREE.Vector3(380, 0, 0.3),
-      new THREE.Vector3(400, 0, 0.3),
-      new THREE.Vector3(420, 0, 0.3),
-      new THREE.Vector3(440, 0, 0.3),
-      new THREE.Vector3(460, 0, 0.3),
-      new THREE.Vector3(480, 0, 0.3),
+      // new THREE.Vector3(120, 0, 4),
+      // new THREE.Vector3(140, 0, 4),
+      new THREE.Vector3(160, 0, 4),
+      new THREE.Vector3(180, 0, 4),
+      new THREE.Vector3(200, 0, 4),
+      // new THREE.Vector3(220, 0, 4),
+      new THREE.Vector3(240, 0, 4),
+      new THREE.Vector3(260, 0, 4),
+      new THREE.Vector3(280, 0, 4),
+      new THREE.Vector3(300, 0, 4),
+      new THREE.Vector3(320, 0, 4),
+      new THREE.Vector3(340, 0, 4),
+      new THREE.Vector3(360, 0, 4),
+      new THREE.Vector3(380, 0, 4),
+      new THREE.Vector3(400, 0, 4),
+      new THREE.Vector3(420, 0, 4),
+      new THREE.Vector3(440, 0, 4),
+      new THREE.Vector3(460, 0, 4),
+      new THREE.Vector3(480, 0, 4),
+      new THREE.Vector3(240, 0, 4),
+      new THREE.Vector3(-260, 0, 4),
+      new THREE.Vector3(-280, 0, 4),
+      new THREE.Vector3(-300, 0, 4),
+      new THREE.Vector3(-320, 0, 4),
+      new THREE.Vector3(-340, 0, 4),
+      new THREE.Vector3(-360, 0, 4),
+      new THREE.Vector3(-378, 0, 4),
+      new THREE.Vector3(-400, 0, 4),
+      new THREE.Vector3(-420, 0, 4),
+      new THREE.Vector3(-440, 0, 4),
+      new THREE.Vector3(-460, 0, 4),
+      new THREE.Vector3(-480, 0, 4),
+      new THREE.Vector3(-500, 0, 4),
+      new THREE.Vector3(-520, 0, 4),
+      new THREE.Vector3(-540, 0, 4),
+      new THREE.Vector3(-560, 0, 4),
+      new THREE.Vector3(-580, 0, 4),
+      new THREE.Vector3(-600, 0, 4),
+      new THREE.Vector3(-620, 0, 4),
+      new THREE.Vector3(-640, 0, 4),
+      new THREE.Vector3(-660, 0, 4),
+      new THREE.Vector3(-680, 0, 4),
+      new THREE.Vector3(-700, 0, 4),
+      new THREE.Vector3(-720, 0, 4),
+      new THREE.Vector3(-740, 0, 4),
+      new THREE.Vector3(-760, 0, 4),
+      new THREE.Vector3(-780, 0, 4),
+      new THREE.Vector3(-800, 0, 4),
+      new THREE.Vector3(-820, 0, 4),
+      new THREE.Vector3(-840, 0, 4),
+      new THREE.Vector3(-860, 0, 4),
+      new THREE.Vector3(-880, 0, 4),
     ];
   }, []);
 
@@ -731,7 +840,7 @@ export function Railway() {
       {electricPoleStation.map((pos, i) => (
         <StationPole
           key={`station-pole-${i}`}
-          scale={[0.3, 0.25, 0.4]}
+          scale={[0.3, 0.25, 0.28]}
           position={pos}
         />
       ))}
@@ -749,7 +858,7 @@ export function Railway() {
       {electricPoleYard.map((pos, i) => (
         <StationPole
           key={`yard-pole-${i}`}
-          scale={[0.3, 0.25, 0.4]}
+          scale={[0.3, 0.25, 0.3]}
           position={pos}
         />
       ))}

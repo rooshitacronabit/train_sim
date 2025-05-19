@@ -103,6 +103,8 @@ export default function App() {
           </div>         
         </div>
       )} */}
+
+      
       {/* Main Content */}
       <Canvas>
         <Scene onLoaded={() => setIsSceneLoaded(true)} />

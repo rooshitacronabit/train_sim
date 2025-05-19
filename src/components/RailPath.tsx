@@ -146,8 +146,8 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
           if (trackAngle == "curve1") {
             x =
               start.clone().sub(center).x > 0
-                ? start.clone().sub(center).x - 160
-                : start.clone().sub(center).x + 100;
+                ? start.clone().sub(center).x - 8
+                : start.clone().sub(center).x + 8.4;
             y = end.clone().sub(center).y;
             z = end.clone().sub(center).z;
           } else if (trackAngle == "curve2") {
@@ -174,12 +174,14 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
           // center2 = new THREE.Vector3(x + 25, y, z);
 
 
-          center1 =  new THREE.Vector3(x, y, z);
+          center1 = trackAngle == "curve2"
+              ? end.clone().sub({ x: center.x -80, y: center.y, z: center.z - 10})
+              :new THREE.Vector3(x, y, z);
 
           center2 = trackAngle == "curve1"
-            ? end.clone().sub({ x: center.x + 18, y: center.y, z: center.z })
+            ? end.clone().sub({ x: center.x, y: center.y, z: center.z })
             : trackAngle == "curve2"
-              ? end.clone().sub({ x: center.x - 17, y: center.y, z: center.z + 25 })
+              ? end.clone().sub({ x: center.x -15, y: center.y, z: center.z -0})
               : trackAngle == "curve4"
                 ? new THREE.Vector3(x, y, z)
                 : trackAngle == "curve20"
@@ -275,8 +277,8 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
           if (trackAngle == "curve1") {
             x =
               start.clone().x > 0
-                ? start.clone().x - 60
-                : start.clone().x + 120;
+                ? start.clone().x - 1
+                : start.clone().x + 8;
             y = end.clone().y;
             z = end.clone().z;
           } else if (trackAngle == "curve2") {
@@ -312,8 +314,12 @@ export const RailPath = forwardRef<RailPathImpl, RailPathProps>(
           //     : end.clone();
 
 
-          center1 =  new THREE.Vector3(x-18, y, z );
-          center2 = new THREE.Vector3(x -60 , y, z - 2);
+          center1 =  trackAngle == "curve2"
+            ? new THREE.Vector3(x, y, z)
+            : new THREE.Vector3(x-18, y, z );
+          center2 = trackAngle == "curve1"
+            ? new THREE.Vector3(x-35, y, z +1)
+            :new THREE.Vector3(x -60 , y, z - 2);
           // center2 = trackAngle == "curve1"
           //   ? end.clone().sub({ x: center.x + 18, y: center.y, z: center.z })
           //   : trackAngle == "curve2"

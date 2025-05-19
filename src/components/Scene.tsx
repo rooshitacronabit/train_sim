@@ -139,14 +139,14 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
 
     if (
       currentLine == "3-line" ||
-      currentLine == "4-line"
+      currentLine == "3 line"
     ) {
       return new THREE.Vector3(railSegmentLength * -6.5, trainHeight, trackspace-3);
     }
 
 
     if (
-      currentLine == "3 line" ||
+      // currentLine == "3 line" ||
       currentLine == "4 line"
     ) {
       return new THREE.Vector3(railSegmentLength * -9, trainHeight, trackspace-152);

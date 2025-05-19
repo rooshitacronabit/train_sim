@@ -21,14 +21,14 @@ export const TrainEngine = forwardRef<RapierRigidBody, TrainProps>(
     const target = useRef<THREE.Object3D>();
 
     const positions = useMemo(() => {
-      return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line"|| currentLine == "9-line")
+      return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line"|| currentLine == "9-line"||currentLine == "3-line"||currentLine == "4-line")
         ? [
             new THREE.Vector3(3.2, 0.325, -0.23),
             new THREE.Vector3(-15, 2, 0),
             new THREE.Vector3(-2, 3, 5),
             new THREE.Vector3(-1, 3, 0),
           ]
-        : currentLine == "10 line" || currentLine == "20 line" 
+        : currentLine == "3-line" || currentLine == "20 line" 
         ? [
             new THREE.Vector3(3.2, 0.325, -0.23),
             new THREE.Vector3(-15, 2, 0),
@@ -71,9 +71,9 @@ export const TrainEngine = forwardRef<RapierRigidBody, TrainProps>(
     );
 
     const targetObjectposition = useMemo(() => {
-      return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line"|| currentLine == "9-line")
+      return isReverse && (currentLine == "1-line" || currentLine == "2-line"|| currentLine == "3 line"|| currentLine == "4 line"|| currentLine == "5 line"|| currentLine == "6 line"|| currentLine == "7 line"|| currentLine == "9-line"||currentLine == "3-line"||currentLine == "4-line")
         ? new THREE.Vector3(30, -2, 0)
-        : currentLine == "10 line" || currentLine == "20 line"
+        : currentLine == "3-line" || currentLine == "20 line"
         ? new THREE.Vector3(30, -2, 0)
         : new THREE.Vector3(-15, -2, 0);
     }, [isReverse, currentLine]);

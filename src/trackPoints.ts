@@ -78,19 +78,20 @@ export const trackPoints = [
 
   { start: -9, end: -10, jointStart: 2, jointEnd: -8, joint: [0, 6, 0, 160], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveLeft",trackAngle:"curve2", trackRotation: [0, (0*Math.PI),0] },
   
-  { start: -9, end: -10, jointStart: 15, jointEnd: -2, joint: [0, 194, 0, 95], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveLeft",trackRotation: [0, 0 ,0] },
+  // { start: -9, end: -10, jointStart: 15, jointEnd: -2, joint: [0, 194, 0, 95], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveLeft",trackRotation: [0, 0 ,0] },
 
   {
-    start: -15, end: -16, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*63.5, trackspace* 0, trackspace*60.45], line: 3 ,curvePath: "straight"
+    start: -16.84, end: -17.84, jointStart: 15, jointEnd: 2, joint: [trackspace*  0, trackspace*53.32, trackspace* 0, trackspace*53.32], line: 3 ,curvePath: "straight"
   },
 
 
 
   // { start: -9, end: -10 , jointStart: 1, jointEnd: 1, joint: [0, -150, 0, -69], line: 1, curvePath: "curveleft", trackLength: railSegmentLength * 1},
-  { face:"reverse",start: -10, end: -9 , jointStart: 3, jointEnd: 1, joint: [0, -69, 0, -99], line: 1, curvePath: "curveRight", trackLength: railSegmentLength * 1},
-  {face:"reverse",start: -9, end: -8 , jointStart: 1, jointEnd: 1, joint: [0, -99, 0, -129], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1},
-  {start:-7.5, end:-8.5, jointStart:-1, jointEnd:3,joint: [0, -144, 0, -144], line: 1, curvePath:"straight",trackRotation: [0, (Math.PI / 2), 0]},
-
+  {start: -9, end: -10 , jointStart: 1, jointEnd: 3, joint: [0, -99, 0, -69], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1},
+  {start: -8, end: -9 , jointStart: 3, jointEnd: 4, joint: [0, -129, 0, -99], line: 1, curvePath: "curveRight",trackAngle:"curve1", trackLength: railSegmentLength * 1},
+  
+  { start: -4, end: -5, jointStart: -2, jointEnd: 8, joint: [0, -129, 0, -229], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveRight",trackAngle:"curve2" },
+  
 ];
 
 

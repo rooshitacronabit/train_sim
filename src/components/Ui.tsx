@@ -89,7 +89,7 @@ const saveRouteData = async ({
 
 
   try {
-    const res = await fetch("http://localhost/train_sim_rjt/server/saveRouteData.php", {
+    const res = await fetch("http://localhost/train_sim/server/saveRouteData.php", {
       method: "POST",
       body: formData,
     });

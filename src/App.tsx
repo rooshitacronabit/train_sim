@@ -48,6 +48,8 @@ export default function App() {
     const [userSubmitted, setUserSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [CLI, setCLI] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [headquarter, setHeadquarter] = useState("");
 
   const handleUserSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,9 +57,11 @@ export default function App() {
     const formData = new FormData();
     formData.append("user_name", name);
     formData.append("CLI", CLI);
+    formData.append("designation", designation); 
+    formData.append("headquarter", headquarter);
 
     try {
-      const res = await fetch("http://localhost/train_sim_rjt/server/start.php", {
+      const res = await fetch("http://localhost/train_sim/server/start.php", {
         method: "POST",
         body: formData,
       });
@@ -67,7 +71,7 @@ export default function App() {
 
         if (responseData.message === "Data received successfully") {
           console.log("Data received successfully");
-          console.log(name, CLI);
+          console.log(name, CLI, designation, headquarter);
           localStorage.setItem("name", name);
           setUserSubmitted(true);
         } else {
@@ -105,6 +109,20 @@ export default function App() {
                     required
                     value={CLI}
                     onChange={(e) => setCLI(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Designation"
+                    required
+                    value={designation}
+                    onChange={(e) => setDesignation(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Headquarter"
+                    required
+                    value={headquarter}
+                    onChange={(e) => setHeadquarter(e.target.value)}
                   />
                   <button type="submit" >Start Simulation</button>
                 </form>
@@ -181,3 +199,6 @@ export default function App() {
     </GlobalContext.Provider>
   );
 }
+
+
+//designation and headquarters

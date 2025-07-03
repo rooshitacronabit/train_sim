@@ -28,11 +28,10 @@ import {
 
 interface UiProps {
   name: string;
-  department: string;
+  CLI: string;
 }
 
-export const Ui: React.FC<UiProps> = ({ name, department }) =>  {
-  // console.log("Ui props:", name, department);
+export const Ui: React.FC<UiProps> = ({ name, CLI }) =>  {
   const {
     trackEnd,
     camera,
@@ -69,7 +68,7 @@ export const Ui: React.FC<UiProps> = ({ name, department }) =>  {
 
 const saveRouteData = async ({
   name,
-  department,
+  CLI,
   route,
   line,
   startTime,
@@ -77,18 +76,18 @@ const saveRouteData = async ({
   totalTime,
 }: {
   name: string;
-  department: string;
+  CLI: string;
   route: string;
   line: string;
   startTime: string | null;
   endTime: string | null;
   totalTime: string | null;
 }) => {
-  console.log("Saving data:", { name, department, route, line, startTime, endTime, totalTime  });
+  console.log("Saving data:", { name, CLI, route, line, startTime, endTime, totalTime  });
 
   const formData = new FormData();
   formData.append("name", name);
-  formData.append("department", department);
+  formData.append("CLI", CLI);
   formData.append("route", route);
   formData.append("line", line);
   formData.append("startTime", startTime || "");
@@ -126,15 +125,6 @@ const saveRouteData = async ({
         setRailWayRoot(railwayRoots[Routename]?.lines);
         setIsDropdownOpen(false);
 
-        // saveRouteData({
-        //   name,
-        //   department,
-        //   route: Routename,
-        //   line: currentLine,
-        //   startTime: now,
-        //   endTime: null,
-        //   totalTime: null,
-        // });
       },
       []
     );
@@ -158,105 +148,9 @@ const updateCurLine = useCallback(
 
     setCurrentLine(Linename); // Update the current line
 
-    // Save route data only after both route and line are selected
-    // if (selctedRootName) {
-    //   await saveRouteData({
-    //     name,
-    //     department,
-    //     route: selctedRootName,
-    //     line: Linename,
-    //     startTime: startTime,
-    //     endTime: now,
-    //     totalTime: duration,
-    //   });
-    // }
   },
   [currentLine, railPaths, setStopPhysics, setCurrentLine]
 );
-
-
-// const pageReload = () => {
-//   const now = new Date().toISOString();
-//   setEndTime(now); // Record the end time
-
-//   if (startTime) {
-//     const durationMs = new Date(now).getTime() - new Date(startTime).getTime();
-//     const duration = (durationMs / 1000).toFixed(2) + " seconds";
-//     setTotalTime(duration);
-
-//     // Save the data before reloading
-//     saveRouteData({
-//       name,
-//       department,
-//       route: selctedRootName,
-//       line: currentLine,
-//       startTime: startTime,
-//       endTime: now,
-//       totalTime: duration,
-//     });
-//   }
-
-//   // Reload the page
-//   location.reload();
-// };
-    
-
-// // useEffect(() => {
-// //   const handleBeforeUnload = () => {
-// //     const now = new Date().toISOString();
-// //     setEndTime(now);
-
-// //     if (startTime) {
-// //       const durationMs = new Date(now).getTime() - new Date(startTime).getTime();
-// //       const duration = (durationMs / 1000).toFixed(2) + " seconds";
-
-// //       saveRouteData({
-// //         name,
-// //         department,
-// //         route: selctedRootName,
-// //         line: currentLine,
-// //         startTime: startTime,
-// //         endTime: now,
-// //         totalTime: duration,
-// //       });
-// //     }
-// //   };
-
-// //   window.addEventListener("beforeunload", handleBeforeUnload);
-
-// //   return () => {
-// //     window.removeEventListener("beforeunload", handleBeforeUnload);
-// //   };
-// // }, [startTime, name, department, selctedRootName, currentLine]);
-
-// useEffect(() => {
-//   const handleBeforeUnload = () => {
-//     const now = new Date().toISOString();
-//     setEndTime(now);
-
-//     if (startTime && selctedRootName && currentLine) {
-//       const durationMs = new Date(now).getTime() - new Date(startTime).getTime();
-//       const duration = (durationMs / 1000).toFixed(2) + " seconds";
-
-//       // Save the data before the page unloads
-//       saveRouteData({
-//         name,
-//         department,
-//         route: selctedRootName,
-//         line: currentLine,
-//         startTime: startTime,
-//         endTime: now,
-//         totalTime: duration,
-//       });
-//     }
-//   };
-
-//   window.addEventListener("beforeunload", handleBeforeUnload);
-
-//   return () => {
-//     window.removeEventListener("beforeunload", handleBeforeUnload);
-//   };
-// }, [startTime, name, department, selctedRootName, currentLine]);
 
 
 const handleReset = () => {
@@ -271,7 +165,7 @@ const handleReset = () => {
     // Save the data
     saveRouteData({
       name,
-      department,
+      CLI,
       route: selctedRootName,
       line: currentLine,
       startTime: startTime,

@@ -27,9 +27,9 @@ if ($conn->connect_error) {
 }
 
 // Check if the form data is received
-if (isset($_POST['name'], $_POST['department'], $_POST['route'], $_POST['line'], $_POST['startTime'], $_POST['endTime'], $_POST['totalTime'])) {
+if (isset($_POST['name'], $_POST['CLI'], $_POST['route'], $_POST['line'], $_POST['startTime'], $_POST['endTime'], $_POST['totalTime'])) {
     $name = $conn->real_escape_string($_POST['name']);
-    $department = $conn->real_escape_string($_POST['department']);
+    $CLI = $conn->real_escape_string($_POST['CLI']);
     $route = $conn->real_escape_string($_POST['route']);
     $line = $conn->real_escape_string($_POST['line']);
     $startTime = $conn->real_escape_string($_POST['startTime']);
@@ -38,8 +38,8 @@ if (isset($_POST['name'], $_POST['department'], $_POST['route'], $_POST['line'],
 
 
     // SQL query to insert data into the database
-    $sql = "INSERT INTO route_data1 (name, department, route, line, start_time, end_time, total_time) 
-            VALUES ('$name', '$department', '$route', '$line', '$startTime', '$endTime', '$totalTime')";
+    $sql = "INSERT INTO route_data1 (name, CLI, route, line, start_time, end_time, total_time) 
+            VALUES ('$name', '$CLI', '$route', '$line', '$startTime', '$endTime', '$totalTime')";
 
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["success" => true, "message" => "Route data saved successfully"]);
@@ -52,3 +52,16 @@ if (isset($_POST['name'], $_POST['department'], $_POST['route'], $_POST['line'],
 
 $conn->close();
 ?>
+
+
+<!-- CREATE TABLE route_data1 (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    CLI VARCHAR(255) NOT NULL,
+    route VARCHAR(255) NOT NULL,
+    line VARCHAR(255) NOT NULL,
+    start_time DATETIME,
+    end_time DATETIME,
+    total_time VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+); -->

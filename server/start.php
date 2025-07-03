@@ -1,6 +1,6 @@
 <?php
 // Database connection
-header("Access-Control-Allow-Origin: *"); // Allow all origins (or specify the exact origin instead of *)
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
@@ -17,12 +17,11 @@ if ($conn->connect_error) {
 }
 
 // Check if the form data is received
-if (isset($_POST['user_name']) && isset($_POST['department'])) {
+if (isset($_POST['user_name']) && isset($_POST['CLI'])) {
     $name = $conn->real_escape_string($_POST['user_name']);
-    $department = $conn->real_escape_string($_POST['department']);
+    $CLI = $conn->real_escape_string($_POST['CLI']);
 
-    // SQL query to insert data into the database
-    $sql = "INSERT INTO user_data (name, department) VALUES ('$name', '$department')";
+    $sql = "INSERT INTO user_data (name, CLI) VALUES ('$name', '$CLI')";
 
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["message" => "Data received successfully"]);

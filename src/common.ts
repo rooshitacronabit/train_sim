@@ -83,6 +83,7 @@ export interface RailPathProps {
   curvePath: string;
   trackAngle?: string;
   trackRotation?: any;
+  // joint?: [number, number, number, number];
 }
 
 export interface RailPathImpl {
@@ -226,13 +227,14 @@ export const railWayLines = {
   [
     // 162,163,164,165,7,
     // 166,167,168,169,7,8,
-    180,179,178,11,10,9,8
-    // 9,10,11,178,179,180
+    // 180,179,178,11,10,9,8
+    9,10,11,178,179,180
     // Problem....
   ],
   "4-line":
   [
     // 159,160,161,165,7,
+    180,179,178,11,10,9
     // 163,164,165,169,7,8,9,10,11,179,180,181
     // Problem
   ],

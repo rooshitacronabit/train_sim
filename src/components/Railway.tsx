@@ -636,12 +636,48 @@ export function Railway() {
   const deadEndPosition = useMemo(() => {
     return [
       {
+        position: new THREE.Vector3(122, -0.1, 30),
+        rotation: new THREE.Euler(0, 0, 0),
+      },{
+        position: new THREE.Vector3(152, -0.1, 27),
+        rotation: new THREE.Euler(0, 0, 0),
+      },
+      {
+        position: new THREE.Vector3(122, -0.1, 9),
+        rotation: new THREE.Euler(0, 0, 0),
+      },
+      {
+        position: new THREE.Vector3(92, -0.1, 0),
+        rotation: new THREE.Euler(0, 0, 0),
+      },
+      {
+        position: new THREE.Vector3(28, -0.1, -3),
+        rotation: new THREE.Euler(0, -Math.PI, 0),
+      },
+      {
         position: new THREE.Vector3(2, -0.1, -12),
         rotation: new THREE.Euler(),
       },
       {
+        position: new THREE.Vector3(-92, -0.1, 18),
+        rotation: new THREE.Euler(0, -Math.PI, 0),
+      },
+
+       {
+        position: new THREE.Vector3(-122, -0.1,15),
+        rotation: new THREE.Euler(0, -Math.PI, 0),
+      },
+       {
+        position: new THREE.Vector3(-362, -0.1,30),
+        rotation: new THREE.Euler(0, -Math.PI, 0),
+      },
+      {
         position: new THREE.Vector3(-152, -0.1, 27),
         rotation: new THREE.Euler(0, -Math.PI, 0),
+      },
+      {
+        position: new THREE.Vector3(-58, -0.1, 9),
+        rotation: new THREE.Euler(0, 0, 0),
       },
     ];
   }, []);

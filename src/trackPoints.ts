@@ -86,12 +86,41 @@ export const trackPoints = [
 
 
 
-  // { start: -9, end: -10 , jointStart: 1, jointEnd: 1, joint: [0, -150, 0, -69], line: 1, curvePath: "curveleft", trackLength: railSegmentLength * 1},
-  {start: -9, end: -10 , jointStart: 1, jointEnd: 3, joint: [0, -99, 0, -69], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1},
+
+  {start: -5, end: -6 , jointStart: 1, jointEnd: 3, joint: [0, -99, 0, -69], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1},
   {start: -8, end: -9 , jointStart: 3, jointEnd: 4, joint: [0, -129, 0, -99], line: 1, curvePath: "curveRight",trackAngle:"curve1", trackLength: railSegmentLength * 1},
   
-  { start: -4, end: -5, jointStart: -2, jointEnd: 8, joint: [0, -129, 0, -229], trackLength: railSegmentLength * 2, line: 3, curvePath: "curveRight",trackAngle:"curve2" },
-  
+  { start: -4, end: -5, jointStart: -2, jointEnd: 8, joint: [0, -129, 0, -229], trackLength: railSegmentLength * 2, line: 1, curvePath: "curveRight",trackAngle:"curve2" },
+
+
+
+
+
+    { start: -2, end: -3, jointStart: -2, jointEnd: -2, joint: [trackspace * -3, trackspace * 2, trackspace*-4, trackspace * 2], line: 3 },
+
+    { start: -2, end: -3, jointStart: -2, jointEnd: -2, joint: [trackspace * 3, trackspace * 2, trackspace*2, trackspace * 2], line: 3 },
+
+    { start: 2, end: 1, jointStart: 2, jointEnd: 2, joint: [trackspace * 0, trackspace * 2, trackspace*-1, trackspace * 2], line: 3 },
+    { start: -2, end: -3, jointStart: -2, jointEnd: -2, joint: [trackspace * 6, trackspace * 2, trackspace*6, trackspace * 2], line: 3 },
+
+    { start: -3, end: -4, jointStart: -3, jointEnd: -3, joint: [trackspace * 5, trackspace * 2, trackspace*5, trackspace * 2], line: 3 },
+        
+    { start: -11, end: -12, jointStart: -11, jointEnd: -11, joint: [trackspace * 10, trackspace * 2, trackspace*10, trackspace * 2], line: 3 },
+
+    { start: 5, end: 4, jointStart: 5, jointEnd: 5, joint: [trackspace * 9, trackspace * 2, trackspace*9, trackspace * 2], line: 3 },
+
+
+    { start: 4, end: 3, jointStart: 4, jointEnd: 4, joint: [trackspace * 12, trackspace * 2, trackspace*10, trackspace * 2], line: 3 },
+
+    { start: 4, end: 3, jointStart: 4, jointEnd: 4, joint: [trackspace * 3, trackspace * 2, trackspace*3, trackspace * 2], line: 3 },
+    
+    { start: 3, end: 2, jointStart: 3, jointEnd: 3, joint: [trackspace * 0, trackspace * 2, trackspace*0, trackspace * 2], line: 3 },
+
+    { start: 3, end: 2, jointStart: 3, jointEnd: 3, joint: [trackspace * 10, trackspace * 2, trackspace*10, trackspace * 2], line: 7 },
+
+    { start: 4, end: 3, jointStart: 4, jointEnd: 4, joint: [trackspace * 9, trackspace * 2, trackspace*10, trackspace * 2], line: 7 },
+        
+      { start: 4, end: 3, jointStart: 4, jointEnd: 4, joint: [trackspace * 10, trackspace * 2, trackspace*10, trackspace * 2], line: 7 },
 ];
 
 
@@ -141,35 +170,40 @@ export const signalsPoints = [
 
 
 export const signalData = [
-  { label: "S-2", content: "This is S-2", imagePath: "./signalsPhotos/2.png", audioPath: "s2-new.mp3" },
-  { label: "S-5", content: "This is S-5", imagePath: "./signalsPhotos/5.png", audioPath: "s5-new.mp3" },
-  { label: "S-10", content: "This is S-10", imagePath: "./signalsPhotos/10.png", audioPath: "s10-new.mp3" },
-  { label: "S-12", content: "This is S-12", imagePath: "./signalsPhotos/18.png", audioPath: "s18-new.mp3" },
-  { label: "S-14", content: "This is S-14", imagePath: "./signalsPhotos/20.png", audioPath: "s20-new.mp3" },
-  { label: "S-16", content: "This is S-16", imagePath: "./signalsPhotos/22.png", audioPath: "s22-new.mp3" },
-  { label: "S-23", content: "This is S-23", imagePath: "./signalsPhotos/23.png", audioPath: "s23-new.mp3" },
-  { label: "S-25", content: "This is S-25", imagePath: "./signalsPhotos/25.png", audioPath: "s25-new.mp3" },
-  { label: "S-27", content: "This is S-27", imagePath: "./signalsPhotos/27.png", audioPath: "s27-new.mp3" },
-  { label: "S-28", content: "This is S-28", imagePath: "./signalsPhotos/28.png", audioPath: "s28-new.mp3" },
-  { label: "S-30", content: "This is S-30", imagePath: "./signalsPhotos/30.png", audioPath: "s30-new.mp3" },
-  { label: "S-32", content: "This is S-32", imagePath: "./signalsPhotos/32.png", audioPath: "s32-new.mp3" },
-  { label: "S-34", content: "This is S-34", imagePath: "./signalsPhotos/34.png", audioPath: "s34-new.mp3" },
-  { label: "S-36", content: "This is S-36", imagePath: "./signalsPhotos/36.png", audioPath: "s36-new.mp3" },
-  { label: "S-38", content: "This is S-38", imagePath: "./signalsPhotos/38.png", audioPath: "s38-new.mp3" },
-  { label: "S-40", content: "This is S-40", imagePath: "./signalsPhotos/40.png", audioPath: "s40-new.mp3" },
-  { label: "S-41", content: "This is S-42", imagePath: "./signalsPhotos/42.png", audioPath: "s42-new.mp3" },
-  { label: "S-45", content: "This is S-45", imagePath: "./signalsPhotos/45.png", audioPath: "s45-new.mp3" },
-  { label: "S-46", content: "This is S-46", imagePath: "./signalsPhotos/46.png", audioPath: "s46-new.mp3" },
-  { label: "S-49", content: "This is S-49", imagePath: "./signalsPhotos/49.png", audioPath: "s49-new.mp3" },
-  { label: "S-51", content: "This is S-51", imagePath: "./signalsPhotos/51.png", audioPath: "s51-new.mp3" },
-  { label: "S-52", content: "This is S-52", imagePath: "./signalsPhotos/52.png", audioPath: "s52-new.mp3" },
-  { label: "S-53", content: "This is S-53", imagePath: "./signalsPhotos/53.png", audioPath: "s53-new.mp3" },
-  { label: "S-57", content: "This is S-57", imagePath: "./signalsPhotos/57.png", audioPath: "s57-new.mp3" },
-  { label: "S-59", content: "This is S-59", imagePath: "./signalsPhotos/59.png", audioPath: "s59-new.mp3" },
-  { label: "S-61", content: "This is S-61", imagePath: "./signalsPhotos/61.png", audioPath: "s61-new.mp3" },
-  { label: "S-66", content: "This is S-66", imagePath: "./signalsPhotos/66.png", audioPath: "s66-new.mp3" },
-  { label: "S-69", content: "This is S-69", imagePath: "./signalsPhotos/69.png", audioPath: "s69-new.mp3" },
+  { label: "S-2", content: "This is S-2", imagePath: "./signalsPhotos/S2.png", audioPath: "s2-new.mp3" },
+  { label: "S-5", content: "This is S-5", imagePath: "./signalsPhotos/S5.png", audioPath: "s5-new.mp3" },
+  { label: "S-10", content: "This is S-10", imagePath: "./signalsPhotos/S10.png", audioPath: "s10-new.mp3" },
+  { label: "S-12", content: "This is S-12", imagePath: "./signalsPhotos/S12.png", audioPath: "s12-new.mp3" },
+  // { label: "S-16", content: "This is S-16", imagePath: "./signalsPhotos/S16.png", audioPath: "s16-new.mp3" },
+  { label: "S-14", content: "This is S-14", imagePath: "./signalsPhotos/S20.png", audioPath: "s20-new.mp3" },
+  { label: "S-16", content: "This is S-16", imagePath: "./signalsPhotos/S22.png", audioPath: "s22-new.mp3" },
+  { label: "S-23", content: "This is S-23", imagePath: "./signalsPhotos/S23.png", audioPath: "s23-new.mp3" },
+  { label: "S-25", content: "This is S-25", imagePath: "./signalsPhotos/S25.png", audioPath: "s25-new.mp3" },
+  { label: "S-27", content: "This is S-27", imagePath: "./signalsPhotos/S27.png", audioPath: "s27-new.mp3" },
+  { label: "S-28", content: "This is S-28", imagePath: "./signalsPhotos/S28.png", audioPath: "s28-new.mp3" },
+  { label: "S-30", content: "This is S-30", imagePath: "./signalsPhotos/S30.png", audioPath: "s30-new.mp3" },
+  { label: "S-32", content: "This is S-32", imagePath: "./signalsPhotos/S32.png", audioPath: "s32-new.mp3" },
+  { label: "S-34", content: "This is S-34", imagePath: "./signalsPhotos/S34.png", audioPath: "s34-new.mp3" },
+  { label: "S-36", content: "This is S-36", imagePath: "./signalsPhotos/S36.png", audioPath: "s36-new.mp3" },
+  { label: "S-38", content: "This is S-38", imagePath: "./signalsPhotos/S38.png", audioPath: "s38-new.mp3" },
+  { label: "S-40", content: "This is S-40", imagePath: "./signalsPhotos/S40.png", audioPath: "s40-new.mp3" },
+  { label: "S-42", content: "This is S-42", imagePath: "./signalsPhotos/S42.png", audioPath: "s42-new.mp3" },
+  { label: "S-45", content: "This is S-45", imagePath: "./signalsPhotos/S45.png", audioPath: "s45-new.mp3" },
+  { label: "S-46", content: "This is S-46", imagePath: "./signalsPhotos/S46.png", audioPath: "s46-new.mp3" },
+  { label: "S-49", content: "This is S-49", imagePath: "./signalsPhotos/S49.png", audioPath: "s49-new.mp3" },
+  { label: "S-51", content: "This is S-51", imagePath: "./signalsPhotos/S51.png", audioPath: "s51-new.mp3" },
+  { label: "S-52", content: "This is S-52", imagePath: "./signalsPhotos/S52.png", audioPath: "s52-new.mp3" },
+  { label: "S-53", content: "This is S-53", imagePath: "./signalsPhotos/S53.png", audioPath: "s53-new.mp3" },
+  { label: "S-57", content: "This is S-57", imagePath: "./signalsPhotos/S57.png", audioPath: "s57-new.mp3" },
+  { label: "S-59", content: "This is S-59", imagePath: "./signalsPhotos/S59.png", audioPath: "s59-new.mp3" },
+  { label: "S-61", content: "This is S-61", imagePath: "./signalsPhotos/S61.png", audioPath: "s61-new.mp3" },
+  { label: "S-66", content: "This is S-66", imagePath: "./signalsPhotos/S66.png", audioPath: "s66-new.mp3" },
+  { label: "S-69", content: "This is S-69", imagePath: "./signalsPhotos/S69.png", audioPath: "s69-new.mp3" },
 ];
 
+//Total Signals: 32 + 4(places are not defined yet)
 
+//Remaining Signals: 4 (models are not available) + 4(places are not defined yet)
+
+//Signals added into the model:  28
 

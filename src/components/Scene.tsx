@@ -130,15 +130,16 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
         }
 
 
-    // if (
-    //   currentLine == "3-line" ||
-    //   currentLine == "4-line"
-    // ) {
-    //   return new THREE.Vector3(railSegmentLength * -0.5, trainHeight, trackspace-15);
-    // }
-
     if (
       currentLine == "3-line" ||
+      currentLine == "4-line"
+    ) {
+      // return new THREE.Vector3(railSegmentLength * -0.5, trainHeight, trackspace-15);
+      return new THREE.Vector3(railSegmentLength * -6.5, trainHeight, trackspace-3);
+    }
+
+    if (
+      // currentLine == "3-line" ||
       currentLine == "3 line"
     ) {
       return new THREE.Vector3(railSegmentLength * -6.5, trainHeight, trackspace-3);
@@ -655,9 +656,9 @@ export const Scene: React.FC<SceneProps> = ({ onLoaded }) => {
       {/* <Building /> */}
       <WareHouse position={[100, 0, 50]} scale={0.1}></WareHouse>
       <WareHouse1
-        position={[-104, 0, 270]}
+        position={[122, 0, 36]}
         scale={[0.25, 0.15, 0.15]}
-        rotation={[0, -1.4, 0]}
+        rotation={[0, -0.2, 0]}
       />
     </>
   );

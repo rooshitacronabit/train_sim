@@ -87,7 +87,7 @@ export const trackPoints = [
 
 
 
-  {start: -5, end: -6 , jointStart: 1, jointEnd: 3, joint: [0, -99, 0, -69], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1},
+  {start: -9, end: -10 , jointStart: 1, jointEnd: 3, joint: [0, -99, 0, -69], line: 1, curvePath: "curveLeft", trackLength: railSegmentLength * 1},
   {start: -8, end: -9 , jointStart: 3, jointEnd: 4, joint: [0, -129, 0, -99], line: 1, curvePath: "curveRight",trackAngle:"curve1", trackLength: railSegmentLength * 1},
   
   { start: -4, end: -5, jointStart: -2, jointEnd: 8, joint: [0, -129, 0, -229], trackLength: railSegmentLength * 2, line: 1, curvePath: "curveRight",trackAngle:"curve2" },
